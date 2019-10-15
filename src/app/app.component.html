@@ -4,56 +4,59 @@
         <a href="#!" class="brand-logo">App</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#" class="blue darken-1">Ingresar</a></li>
+          <li><a [routerLink]="['/']">Inicio</a></li>
+          <li><a [routerLink]="['/login']" class="blue darken-1">Ingresar</a></li>
 
           <!-- EMPLEADO -->
-          <li><a href="#"><i class="material-icons right">laptop_chromebook</i>Articulo</a></li>
-          <li><a href="#"><i class="material-icons right">event_note</i>Prestamo</a></li>
+          <li>
+            <ul>
+                <li><a href="#"><i class="material-icons right">laptop_chromebook</i>Articulo</a></li>
+                <li><a href="#"><i class="material-icons right">event_note</i>Prestamo</a></li>
+              </ul>
+            </li>
           <!-- /EMPLEADO -->
-          
-          <li><a href="#"><i class="material-icons right">account_circle</i>Perfil</a></li>
-          <li><a href="#"><i class="material-icons right">exit_to_app</i>Salir</a></li>
 
-          <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
+          <li><a class='dropdown-trigger' href='#' data-target='Perfil'><i class="material-icons right">account_circle</i>Nombre Apellido</a></li>
         </ul>
       </div>
     </nav>
+
+    <ul id="Perfil" class="dropdown-content">
+      <li><a href="#"><i class="material-icons right">cloud_upload</i>Subir foto</a></li>
+      <li><a href="#"><i class="material-icons right">exit_to_app</i>Salir</a></li>
+    </ul>
+
+
   
     <!-- MENU MOVIL -->
     <ul class="sidenav collapsible" id="mobile-demo">
       <li>
-        <div class="collapsible-header"><i class="material-icons">home</i>Inicio</div>
+        <div class="collapsible-header"><a [routerLink]="['/']"  class="item" onclick="ocultar()"><i class="material-icons">home</i>Inicio</a></div>
       </li>
   
       <li>
-          <div class="collapsible-header"><i class="material-icons">face</i>Ingresar</div>      
+          <div class="collapsible-header"><a [routerLink]="['/login']"  class="item"><i class="material-icons">face</i>Ingresar</a></div>      
       </li>
   
-      <!-- MENU EMPLEADO -->
       <li>
-        <div class="collapsible-header"><i class="material-icons">account_circle</i>Perfil</div>
+        <div class="collapsible-header"><i class="material-icons">account_circle</i>Nombre Apellido</div>
         <div class="collapsible-body">
           <ul>
-            <li><a href="#"><i class="material-icons">cloud_upload</i>Subir Foto de perfil</a></li>
-            <li><a href="#"><i class="material-icons">laptop_chromebook</i>Articulo</a></li>
-            <li><a href="#"><i class="material-icons">event_note</i>Prestamo</a></li>
-            <li><a href="#"><i class="material-icons">exit_to_app</i>Salir</a></li>
-          </ul>
-        </div>
-      </li>
-      <!-- /MENU EMPLEADO -->
-      <!-- MENU ESTUDIANTE -->
-      <li>
-          <div class="collapsible-header"><i class="material-icons">account_circle</i>Perfil</div>
-          <div class="collapsible-body">
-            <ul>
-                <li><a href="#"><i class="material-icons">cloud_upload</i>Subir Foto de perfil</a></li>
-                <li><a href="#"><i class="material-icons">exit_to_app</i>Salir</a></li>
+            <!-- MENU EMPLEADO -->
+              <li>
+                <ul>
+                  <li><a href="#"><i class="material-icons">cloud_upload</i>Subir Foto de perfil</a></li>
+                  <li><a href="#"><i class="material-icons">laptop_chromebook</i>Articulo</a></li>
+                </ul>
+              </li>
+            <!-- /MENU EMPLEADO -->
+            <!-- MENU PERFIL -->
+              <li><a href="#"><i class="material-icons">event_note</i>Prestamo</a></li>
+              <li><a href="#"><i class="material-icons">exit_to_app</i>Salir</a></li>
+            <!-- /MENU PERFIL -->
             </ul>
           </div>
-      </li>
-      <!-- /MENU ESTUDIANTE -->
+        </li>
     </ul>
     <!-- /MENU MOVIL -->
 </header>
