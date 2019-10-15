@@ -30,12 +30,12 @@
   
     <!-- MENU MOVIL -->
     <ul class="sidenav collapsible" id="mobile-demo">
-      <li>
-        <div class="collapsible-header"><a [routerLink]="['/']"  class="item" onclick="ocultar()"><i class="material-icons">home</i>Inicio</a></div>
+      <li  onclick="ocultar()" [routerLink]="['/']">
+        <div class="collapsible-header"><a class="item"><i class="material-icons">home</i>Inicio</a></div>
       </li>
   
-      <li>
-          <div class="collapsible-header"><a [routerLink]="['/login']"  class="item"><i class="material-icons">face</i>Ingresar</a></div>      
+      <li  onclick="ocultar()" [routerLink]="['/login']">
+          <div class="collapsible-header"><a class="item"><i class="material-icons">face</i>Ingresar</a></div>      
       </li>
   
       <li>
@@ -45,14 +45,14 @@
             <!-- MENU EMPLEADO -->
               <li>
                 <ul>
-                  <li><a href="#"><i class="material-icons">cloud_upload</i>Subir Foto de perfil</a></li>
-                  <li><a href="#"><i class="material-icons">laptop_chromebook</i>Articulo</a></li>
+                  <li><a href="#" onclick="ocultar()"><i class="material-icons">cloud_upload</i>Subir Foto de perfil</a></li>
+                  <li><a href="#" onclick="ocultar()"><i class="material-icons">laptop_chromebook</i>Articulo</a></li>
                 </ul>
               </li>
             <!-- /MENU EMPLEADO -->
             <!-- MENU PERFIL -->
-              <li><a href="#"><i class="material-icons">event_note</i>Prestamo</a></li>
-              <li><a href="#"><i class="material-icons">exit_to_app</i>Salir</a></li>
+              <li><a href="#" onclick="ocultar()"><i class="material-icons">event_note</i>Prestamo</a></li>
+              <li><a href="#" onclick="ocultar()"><i class="material-icons">exit_to_app</i>Salir</a></li>
             <!-- /MENU PERFIL -->
             </ul>
           </div>
