@@ -10,10 +10,10 @@
           <!-- EMPLEADO -->
           <li>
             <ul>
-                <li><a href="#"><i class="material-icons right">laptop_chromebook</i>Articulo</a></li>
-                <li><a href="#"><i class="material-icons right">event_note</i>Prestamo</a></li>
-              </ul>
-            </li>
+              <li><a href="#"><i class="material-icons right">laptop_chromebook</i>Articulo</a></li>
+              <li><a href="#"><i class="material-icons right">event_note</i>Prestamo</a></li>
+            </ul>
+          </li>
           <!-- /EMPLEADO -->
 
           <li><a class='dropdown-trigger' href='#' data-target='Perfil'><i class="material-icons right">account_circle</i>Nombre Apellido</a></li>
@@ -32,11 +32,13 @@
     <ul class="sidenav collapsible" id="mobile-demo">
       <li  onclick="ocultar()" [routerLink]="['/']">
         <div class="collapsible-header"><a class="item"><i class="material-icons">home</i>Inicio</a></div>
+        <div class="collapsible-body"></div>
       </li>
   
       <li  onclick="ocultar()" [routerLink]="['/login']">
           <div class="collapsible-header"><a class="item"><i class="material-icons">face</i>Ingresar</a></div>      
-      </li>
+          <div class="collapsible-body"></div>
+        </li>
   
       <li>
         <div class="collapsible-header"><i class="material-icons">account_circle</i>Nombre Apellido</div>

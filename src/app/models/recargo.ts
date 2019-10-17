@@ -1,4 +1,4 @@
-export class recargo {
+export class Recargo {
     constructor(
         public id: number,
         public id_prestamo: number,

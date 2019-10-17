@@ -1,4 +1,4 @@
-export class articulos {
+export class Articulos {
     constructor(
         public id: number,
         public codigo_empleado: number,

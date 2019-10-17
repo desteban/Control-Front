@@ -1,4 +1,4 @@
-export class prestamo {
+export class Prestamo {
     constructor(
         public id: number,
         public codigo_empleado: number,

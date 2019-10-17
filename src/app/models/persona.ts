@@ -1,4 +1,4 @@
-export class persona {
+export class Persona {
     constructor(
         public id: number,
         public nombre: string,
@@ -9,5 +9,9 @@ export class persona {
         public password: string
     ) {
 
+    }
+    
+    public static PersonaDefault(){
+        return new Persona(0,'','','','',false,'')
     }
 }

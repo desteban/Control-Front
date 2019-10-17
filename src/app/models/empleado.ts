@@ -1,6 +1,6 @@
-import { persona } from './persona';
+import { Persona } from './persona';
 
-export class empleado extends persona {
+export class Empleado extends Persona {
     constructor(
         id: number,
         nombre: string,
