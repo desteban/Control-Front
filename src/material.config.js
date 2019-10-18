@@ -22,3 +22,36 @@ function ocultar(){
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems);
 }
+
+function empleado() {
+    var elems = document.querySelectorAll('.autocomplete');
+    var instances = M.Autocomplete.init(elems, {
+      data: {
+        "Admin": null,
+        "Profesor": null
+      }
+    });
+}
+
+function estudiante() {
+    var elems = document.querySelectorAll('.autocomplete');
+    var instances = M.Autocomplete.init(elems, {
+      data: {
+        "Administracion": null,
+        "Ingerieria de sistemas": null,
+        "Zootectia": null,
+        "Psicologia": null,
+        "Ingenieria ambiental": null
+      }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.autocomplete');
+  var instances = M.Autocomplete.init(elems, {
+    data: {
+      "Admin": null,
+      "Profesor": null
+    }
+  });
+});
