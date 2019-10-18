@@ -4,21 +4,22 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">face</i>
                 <input type="number" class="validate" id="C.C." name="C.C." 
-                #cc="ngModel" [(ngModel)]="persona.cc" required pattern="[0-9]" >
+                    #cc="ngModel" [(ngModel)]="persona.cc" required >
                 <label for="C.C.">C.C.</label>
-                <small *ngIf="!cc.valid && cc.touched" class="col s12 warning" >Hola, que hace</small>
+                <label *ngIf="!cc.valid && cc.touched" for="C.C.">C.C. obligatorio</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">lock</i>
                 <input type="password" class="validate" id="password" name="password" 
-                #password [(ngModel)]="persona.password">
+                    #password [(ngModel)]="persona.password" required>
                 <label for="password">Contraseña</label>
             </div>
         </div>
         <div class="row center">
-            <button class="btn-large waves-effect waves-light center" type="submit">Signin</button>
+            <input type="submit" value="Sign-in"  class="btn-large waves-effect waves-light center" 
+                [disabled]="loginForm.invalid">
         </div>
     </form>
 </div>

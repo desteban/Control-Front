@@ -21,7 +21,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(){
-
+  onSubmit(form){
+    console.log(this.persona)
+    //vaciar el formulario
+    form.reset()
   }
 }

@@ -1,7 +1,7 @@
 <header>
   <nav class="blue darken-3">
       <div class="nav-wrapper container">
-        <a href="#!" class="brand-logo">App</a>
+        <a [routerLink]="['/']" routerLinkActive="router-link-active"  class="brand-logo">App</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a [routerLink]="['/']">Inicio</a></li>
@@ -12,6 +12,7 @@
             <ul>
               <li><a href="#"><i class="material-icons right">laptop_chromebook</i>Articulo</a></li>
               <li><a href="#"><i class="material-icons right">event_note</i>Prestamo</a></li>
+              <li><a [routerLink]="['/persona/crear']" routerLinkActive="router-link-active" ><i class="material-icons right">person_add</i>Crear persona</a></li>
             </ul>
           </li>
           <!-- /EMPLEADO -->
@@ -39,19 +40,28 @@
           <div class="collapsible-header"><a class="item"><i class="material-icons">face</i>Ingresar</a></div>      
           <div class="collapsible-body"></div>
         </li>
-  
+
+      <li>
+        <div class="collapsible-header"><i class="material-icons">work</i>acciones</div>
+        <div class="collapsible-body">
+          <ul>
+            <!-- MENU EMPLEADO -->
+            <li>
+              <ul>
+                <li><a class="item" href="#" onclick="ocultar()"><i class="material-icons">cloud_upload</i>Subir Foto de perfil</a></li>
+                <li><a class="item" href="#" onclick="ocultar()"><i class="material-icons">laptop_chromebook</i>Articulo</a></li>
+                <li><a class="item" [routerLink]="['/persona/crear']" routerLinkActive="router-link-active"  onclick="ocultar()"><i class="material-icons">person_add</i>Crear persona</a></li>
+                </ul>
+              </li>
+              <!-- /MENU EMPLEADO -->                
+            </ul>
+          </div>
+        </li>
+        
       <li>
         <div class="collapsible-header"><i class="material-icons">account_circle</i>Nombre Apellido</div>
         <div class="collapsible-body">
           <ul>
-            <!-- MENU EMPLEADO -->
-              <li>
-                <ul>
-                  <li><a href="#" onclick="ocultar()"><i class="material-icons">cloud_upload</i>Subir Foto de perfil</a></li>
-                  <li><a href="#" onclick="ocultar()"><i class="material-icons">laptop_chromebook</i>Articulo</a></li>
-                </ul>
-              </li>
-            <!-- /MENU EMPLEADO -->
             <!-- MENU PERFIL -->
               <li><a href="#" onclick="ocultar()"><i class="material-icons">event_note</i>Prestamo</a></li>
               <li><a href="#" onclick="ocultar()"><i class="material-icons">exit_to_app</i>Salir</a></li>
