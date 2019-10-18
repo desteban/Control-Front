@@ -6,7 +6,7 @@
                  <input type="text" class="validate" id="nombre" name="nombre" 
                  #nombre ="ngModel" [(ngModel)]="persona.nombre" required >
                  <label for="nombre">Nombre</label>
-                <label *ngIf="!nombre.valid && nombre.touched" for="C.C.">Nombre obligatorio</label>
+                <label *ngIf="!nombre.valid && nombre.touched" for="nombre">Nombre obligatorio</label>
             </div>
 
             <div class="input-field col s12 m6">
@@ -57,7 +57,7 @@
         <div class="row">
             <div class="input-field col s12" >
                 <input type="text" id="autocomplete" name="rol" class="autocomplete" 
-                #rol="ngModel" [(ngModel)]="persona.rol" autocomplete="off" required>
+                #rol="ngModel" [(ngModel)]="persona.rol" autocomplete="off" required (blur)="getSeleccion(rol.value)">
                 <label for="autocomplete" *ngIf="role == 'Empleado'">Rol de Empleado</label>
                 <label for="autocomplete" *ngIf="role == 'Estudiante'">Carrera</label>
             </div>

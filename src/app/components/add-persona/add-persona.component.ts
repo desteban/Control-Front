@@ -11,6 +11,8 @@ export class AddPersonaComponent implements OnInit {
 
   public persona:Persona
   public role:string
+  public datos:any
+
 
   constructor() {
     this.persona = Persona.PersonaDefault()
@@ -38,5 +40,21 @@ export class AddPersonaComponent implements OnInit {
       this.persona.semestre = null
     }
   }
+
+  getSeleccion(data){
+    
+    //autocomplete
+    setTimeout(() => {
+      this.datos = document.getElementById('autocomplete')
+      this.datos = this.datos.value
+      console.log(this.datos)
+
+      if(this.role == 'Estudiante'){
+        this.persona.carrera = this.datos
+        this.persona.rol = 'Estudiante'
+      }else{
+        this.persona.rol = this.datos
+      }
+    }, 50)}
 
 }
