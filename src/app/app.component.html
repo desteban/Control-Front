@@ -17,7 +17,7 @@
           </li>
           <!-- /EMPLEADO -->
 
-          <li><a class='dropdown-trigger' href='#' data-target='Perfil'>
+          <li *ngIf="identity && identity.nombre"><a class='dropdown-trigger' data-target='Perfil'>
             <i class="material-icons right">account_circle</i> {{identity.nombre + ' ' + identity.apellido}} </a></li>
         </ul>
       </div>
