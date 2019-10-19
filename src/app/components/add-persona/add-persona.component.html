@@ -1,4 +1,7 @@
 <div class="col s12">
+    <div class="row">
+        
+    </div>
     <form class="col s12 m7 offset-m3" #personaForm="ngForm" (submit)="onSubmint(personaForm)">
         
         <div class="row">
@@ -57,7 +60,7 @@
         <div class="row">
             <div class="input-field col s12" >
                 <input type="text" id="autocomplete" name="rol" class="autocomplete" 
-                #rol="ngModel" [(ngModel)]="persona.rol" autocomplete="off" required (blur)="getSeleccion(rol.value)">
+                #rol="ngModel" [(ngModel)]="persona.carrera" autocomplete="off" required (blur)="getSeleccion()">
                 <label for="autocomplete" *ngIf="role == 'Empleado'">Rol de Empleado</label>
                 <label for="autocomplete" *ngIf="role == 'Estudiante'">Carrera</label>
             </div>

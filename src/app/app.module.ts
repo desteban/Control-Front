@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from "@angular/common/http";
 import { routing, appRoutingProviders } from "./app.routing";
 import { FormsModule } from "@angular/forms";
 
@@ -20,7 +21,8 @@ import { AddPersonaComponent } from './components/add-persona/add-persona.compon
   imports: [
     BrowserModule,
     routing,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     appRoutingProviders
