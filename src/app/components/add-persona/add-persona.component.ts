@@ -11,9 +11,9 @@ import { UserService } from "../../services/UserService";
 })
 export class AddPersonaComponent implements OnInit {
 
-  public persona:Persona
-  public role:string
-  public datos:any
+  public persona: Persona
+  public role: string
+  public datos: any
 
 
   constructor(
@@ -21,12 +21,12 @@ export class AddPersonaComponent implements OnInit {
   ) {
     this.persona = Persona.PersonaDefault()
     this.role = 'Empleado'
-   }
+  }
 
   ngOnInit() {
   }
 
-  onSubmint(form){
+  onSubmint(form) {
 
     //password por defecto
     this.persona.password = this.persona.cc
@@ -38,20 +38,23 @@ export class AddPersonaComponent implements OnInit {
         console.log(response)
         //limpiar formulario
         form.reset()
-        M.toast({html: 'Persona creada exitosamente', classes: 'rounded'})
+        //Mostrar un toast con infomacio
+        M.toast({ html: 'Persona creada exitosamente', classes: 'rounded toatPers' })
       },
       error => {
-        console.log('Tenemos un error')
-        console.error(error);
+        if (error.error.error.cc) {
+          M.toast({ html: `<span>Esta cedula ya fue registrada</span>`, classes: 'rounded toatPers' })
+        }
+
       })
   }
 
-  getRol(role){
-    
-    if(role){
+  getRol(role) {
+
+    if (role) {
       this.role = 'Estudiante'
       this.persona.carrera = ''
-    }else{
+    } else {
       this.role = 'Empleado'
       this.persona.carrera = ''
       this.persona.carrera = null
@@ -59,21 +62,22 @@ export class AddPersonaComponent implements OnInit {
     }
   }
 
-  getSeleccion(){
-    
+  getSeleccion() {
+
     //autocomplete
     setTimeout(() => {
       this.datos = document.getElementById('autocomplete')
       this.datos = this.datos.value
 
-      if(this.role == 'Estudiante'){
+      if (this.role == 'Estudiante') {
 
         this.persona.rol = 'Estudiante'
         this.persona.carrera = this.datos
-      }else{
+      } else {
 
         this.persona.rol = this.datos
       }
-    }, 10)}
+    }, 10)
+  }
 
 }

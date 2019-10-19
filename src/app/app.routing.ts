@@ -11,8 +11,10 @@ import { AddPersonaComponent } from "./components/add-persona/add-persona.compon
 //DEFINIR RUTAS
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'inicio', component: HomeComponent },
     { path: 'persona/crear', component: AddPersonaComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'logout/:sure', component: LoginComponent },
     { path: '**', component: ErrorComponent }
 ]
 
