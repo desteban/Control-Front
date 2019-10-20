@@ -13,6 +13,14 @@ export class AddArticuloComponent implements OnInit {
   public dirPicture: String
   private input: any
   public M: any
+  public options: Object = {
+    placeholderText: 'Puedes agregar una descripcion del producto',
+    charCounterCount: true,
+    toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+    toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+  };
 
   constructor() {
     this.articulo = Articulos.articuloDefault()
@@ -25,7 +33,7 @@ export class AddArticuloComponent implements OnInit {
   onSubmit(){
 
   }
-  
+
   public toogleButtons () {
     //ocultar o mostrar botones
     document.getElementById('fileName').classList.toggle('hide')

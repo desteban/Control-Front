@@ -1,39 +1,47 @@
 <div class="col s12">
 
-    <form class="col s12 m7 offset-m3 form-upload" #articuloForm (submit)="onSubmit(articuloForm)">
+    <form class="col s12 m7 offset-m3 form-upload" #articuloForm="ngForm" (submit)="onSubmit(articuloForm)">
         
         <div class="row">
+
             <div class="input-field col s12 m4">
-                <input type="text" class="validate" id="nombre" name="nombre" 
-                required >
+                <input type="text" class="validate" name="nombre" id="nombre"
+                #nombre="ngModel" [(ngModel)]="articulo.nombre" required>
                 <label for="nombre">Nombre</label>
-           </div>
-
-           <div class="input-field col s12 m4">
-                <input type="number" class="validate" id="precio" name="precio" 
-                required >
-                <label for="precio">Precio</label>
+                <label for="nombre" *ngIf="!nombre.valid && nombre.touched">Nombre obligatorio</label>
             </div>
 
             <div class="input-field col s12 m4">
-                <input type="number" class="validate" id="cantidad" name="cantidad">
+                <input type="number" class="validate" name="cantidad" id="cantidad"
+                #cantidad="ngModel" [(ngModel)]="articulo.cantidad" required>
                 <label for="cantidad">Cantidad</label>
+                <label for="cantidad" *ngIf="!cantidad.valid && cantidad.touched">Cantidad Obligatoria</label>
+            </div>
+
+            <div class="input-field col s12 m4">
+                <input type="number" name="precio" id="precio" class="validate"
+                #precio="ngModel" [(ngModel)]="articulo.precio" required>
+                <label for="precio">Precio</label>
+                <label for="precio" *ngIf="!precio.valid && precio.valid">Precio Obligatorio</label>
             </div>
         </div>
 
+        <!-- DESCRIPTION -->
         <div class="row">
-            
             <div class="col s12">
-                <textarea name="" id="" cols="30" ></textarea>
+                <textarea [froalaEditor]="options" name="description" 
+                #description="ngModel" [(ngModel)]="articulo.descripcion"></textarea>
             </div>
         </div>
+        <!-- /DESCRIPTION -->
 
         <div class="row">
 
             <div class="center col s12">
                 <div id="fileName" class="fileUpload btn blue darken-3">
-                    <span><i class="fas fa-camera"></i>Subir Imagen</span>
-                    <input type="file" name="picture" id="file" class="upload" (change)="toogleButtons()">
+                    <span><i class="material-icons right">add_a_photo</i>Subir Imagen</span>
+                    <input type="file" name="picture" id="file" class="upload" (change)="toogleButtons()"
+                    #foto="ngModel" [(ngModel)]="articulo.foto">
                 </div>
                 <button id="btnUpload" type="submit" class="btn btn-flay cyan hide"> {{dirPicture}} </button>
                 <button id="btnCancel" type="button" class="btn btn-flay red hide" (click)="toogleButtons()">
