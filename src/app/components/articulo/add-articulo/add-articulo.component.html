@@ -2,6 +2,7 @@
 
     <form class="col s12 m7 offset-m3 form-upload" #articuloForm="ngForm" (submit)="onSubmit(articuloForm)">
         
+        <!-- NOMBRE, CANTIDAD Y PRECIO -->
         <div class="row">
 
             <div class="input-field col s12 m4">
@@ -25,6 +26,7 @@
                 <label for="precio" *ngIf="!precio.valid && precio.valid">Precio Obligatorio</label>
             </div>
         </div>
+        <!-- /NOMBRE, CANTIDAD Y PRECIO -->
 
         <!-- DESCRIPTION -->
         <div class="row">
@@ -37,16 +39,28 @@
 
         <div class="row">
 
-            <div class="center col s12">
+            <!-- IMAGEN 
+            <div class="center col s12 space">
                 <div id="fileName" class="fileUpload btn blue darken-3">
                     <span><i class="material-icons right">add_a_photo</i>Subir Imagen</span>
                     <input type="file" name="picture" id="file" class="upload" (change)="toogleButtons()"
-                    #foto="ngModel" [(ngModel)]="articulo.foto">
+                    #foto="ngModel" [(ngModel)]="articulo.foto" accept="image/*">
                 </div>
                 <button id="btnUpload" type="submit" class="btn btn-flay cyan hide"> {{dirPicture}} </button>
                 <button id="btnCancel" type="button" class="btn btn-flay red hide" (click)="toogleButtons()">
                     <i class="material-icons">cancel</i>
                 </button>
+                
+            </div>
+            /IMAGEN -->
+
+            <div class="col s12 space" *ngIf="articulo.id != 0">
+                    <p>La imagen no puede pesar mas de {{peso}}MB</p>
+                    <angular-file-uploader 
+                        [config]="afuConfig"
+                        [resetUpload]=resetVar
+                        (ApiResponse)="upload($event)">
+                    </angular-file-uploader>
             </div>
 
             <div class="row center">

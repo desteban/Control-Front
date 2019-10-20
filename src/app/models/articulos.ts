@@ -13,6 +13,6 @@ export class Articulos {
     }
 
     public static articuloDefault(){
-        return new Articulos(null,null,'','','',null,null,null)
+        return new Articulos(0,null,'','','',null,null,null)
     }
 }
