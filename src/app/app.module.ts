@@ -9,6 +9,9 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
 import { AddPersonaComponent } from './components/add-persona/add-persona.component';
+import { AddArticuloComponent } from './components/articulo/add-articulo/add-articulo.component';
+import { UpdateArticuloComponent } from './components/articulo/update-articulo/update-articulo.component';
+import { UpdatePersonaComponent } from './components/usuario/update-persona/update-persona.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { AddPersonaComponent } from './components/add-persona/add-persona.compon
     LoginComponent,
     HomeComponent,
     ErrorComponent,
-    AddPersonaComponent
+    AddPersonaComponent,
+    AddArticuloComponent,
+    UpdateArticuloComponent,
+    UpdatePersonaComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@
           <!-- EMPLEADO -->
           <li *ngIf="identity && identity.nombre && identity.rol">
             <ul>
-              <li><a href="#"><i class="material-icons right">laptop_chromebook</i>Articulo</a></li>
+              <li><a [routerLink]="['/articulo/nuevo']" routerLinkActive="router-link-active" ><i class="material-icons right">laptop_chromebook</i>Articulo</a></li>
               <li><a href="#"><i class="material-icons right">event_note</i>Prestamo</a></li>
               <li><a [routerLink]="['/persona/crear']" routerLinkActive="router-link-active" ><i class="material-icons right">person_add</i>Crear persona</a></li>
             </ul>
@@ -50,7 +50,7 @@
             <li>
               <ul>
                 <li><a class="item" href="#" onclick="ocultar()"><i class="material-icons">cloud_upload</i>Subir Foto de perfil</a></li>
-                <li><a class="item" href="#" onclick="ocultar()"><i class="material-icons">laptop_chromebook</i>Articulo</a></li>
+                <li><a class="item" [routerLink]="['/articulo/nuevo']" routerLinkActive="router-link-active"  onclick="ocultar()"><i class="material-icons">laptop_chromebook</i>Articulo</a></li>
                 <li><a class="item" [routerLink]="['/persona/crear']" routerLinkActive="router-link-active"  onclick="ocultar()"><i class="material-icons">person_add</i>Crear persona</a></li>
                 </ul>
               </li>

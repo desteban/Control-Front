@@ -11,4 +11,8 @@ export class Articulos {
     ) {
         
     }
+
+    public static articuloDefault(){
+        return new Articulos(0,0,'','','',0,0,0)
+    }
 }

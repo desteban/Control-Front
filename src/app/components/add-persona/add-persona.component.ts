@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Persona } from "../../models/Persona";
 import { UserService } from "../../services/UserService";
+import * as Material from "../../M.js";
 
 @Component({
   selector: 'app-add-persona',
@@ -14,13 +15,14 @@ export class AddPersonaComponent implements OnInit {
   public persona: Persona
   public role: string
   public datos: any
-
+  public M: any
 
   constructor(
     private _userService: UserService
   ) {
     this.persona = Persona.PersonaDefault()
     this.role = 'Empleado'
+    this.M = Material.getM()
   }
 
   ngOnInit() {
@@ -39,11 +41,11 @@ export class AddPersonaComponent implements OnInit {
         //limpiar formulario
         form.reset()
         //Mostrar un toast con infomacio
-        M.toast({ html: 'Persona creada exitosamente', classes: 'rounded toatPers' })
+        this.M.toast({ html: 'Persona creada exitosamente', classes: 'rounded toatPers' })
       },
       error => {
         if (error.error.error.cc) {
-          M.toast({ html: `<span>Esta cedula ya fue registrada</span>`, classes: 'rounded toatPers' })
+          this.M.toast({ html: `<span>Esta cedula ya fue registrada</span>`, classes: 'rounded toatPers' })
         }
 
       })

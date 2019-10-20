@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../services/UserService";
 import { Router, ActivatedRoute, Params } from "@angular/router";
+import * as Material from "../../M.js"
 
 //importar modelo de persona
 import { Persona } from "../../models/persona";
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   public persona: Persona
   private token: string
   private identity: any
+  public M: any
 
   constructor(
     private _userService: UserService,
@@ -24,6 +26,7 @@ export class LoginComponent implements OnInit {
     private _route: ActivatedRoute
   ) {
     this.persona = Persona.PersonaDefault()
+    this.M = Material.getM()
   }
 
   ngOnInit() {
@@ -38,7 +41,7 @@ export class LoginComponent implements OnInit {
 
         //validar si tenemos errores de validacion
         if (response.status) {
-          M.toast({ html: response.message, classes: 'rounded toatPers' })
+          this.M.toast({ html: response.message, classes: 'rounded toatPers' })
         } else {
 
           //obtener token
