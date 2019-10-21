@@ -1,7 +1,7 @@
 <div class="col s12">
 
-    <form class="col s12 m7 offset-m3 form-upload" #articuloForm="ngForm" (submit)="onSubmit(articuloForm)">
-        
+    <form class="col s12 m7 offset-m3 form-upload" #articuloForm="ngForm" (submit)="onSubmit(articuloForm)" *ngIf="articulo.id == 0">
+
         <!-- NOMBRE, CANTIDAD Y PRECIO -->
         <div class="row">
 
@@ -31,7 +31,7 @@
         <!-- DESCRIPTION -->
         <div class="row">
             <div class="col s12">
-                <textarea [froalaEditor]="options" name="description" 
+                <textarea [froalaEditor]="options" name="description"
                 #description="ngModel" [(ngModel)]="articulo.descripcion"></textarea>
             </div>
         </div>
@@ -39,7 +39,7 @@
 
         <div class="row">
 
-            <!-- IMAGEN 
+            <!-- IMAGEN
             <div class="center col s12 space">
                 <div id="fileName" class="fileUpload btn blue darken-3">
                     <span><i class="material-icons right">add_a_photo</i>Subir Imagen</span>
@@ -50,25 +50,30 @@
                 <button id="btnCancel" type="button" class="btn btn-flay red hide" (click)="toogleButtons()">
                     <i class="material-icons">cancel</i>
                 </button>
-                
+
             </div>
             /IMAGEN -->
 
-            <div class="col s12 space" *ngIf="articulo.id != 0">
-                    <p>La imagen no puede pesar mas de {{peso}}MB</p>
-                    <angular-file-uploader 
-                        [config]="afuConfig"
-                        [resetUpload]=resetVar
-                        (ApiResponse)="upload($event)">
-                    </angular-file-uploader>
-            </div>
-
             <div class="row center">
-                    <input type="submit" value="Crear"  class="btn-large waves-effect waves-light center" 
+                    <input type="submit" value="Crear"  class="btn-large waves-effect waves-light center"
                     [disabled]="articuloForm.invalid">
-                </div>
+            </div>
 
         </div>
 
+
     </form>
+
+    <div class="row">
+        <div class="col s12 space center" *ngIf="articulo.id != 0">
+            <p class="alert">El articulo fue creado, ¿deseas agregar una imagen?, la imagen no puede pesar más de {{peso}}MB</p>
+            <angular-file-uploader
+                [config]="afuConfig"
+                [resetUpload]=resetVar
+                (ApiResponse)="upload($event)">
+            </angular-file-uploader>
+        </div>
+    </div>
+
+
 </div>

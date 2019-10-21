@@ -2,12 +2,12 @@
     span, button{
       color: white;
     }
-  
+
     .fileUpload{
       position: relative;
       overflow: hidden;
       margin: 10px;
-  
+
       input{
         position: absolute;
         top: 0;
@@ -26,4 +26,13 @@
   div.space{
     margin-bottom: 20px;
   }
-   
+
+  .alert{
+    background-color: rgb(247, 247, 15);
+    padding: 10px;
+    border-style: solid;
+    border: 2px;
+    border-color: rgb(0, 0, 0);
+    border-radius: 10px;
+    font-size: 20px;
+  }

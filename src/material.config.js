@@ -23,6 +23,8 @@ function ocultar(){
     var instances = M.Sidenav.init(elems);
 }
 
+//--------------- AUTO COMPLETE----------------------------------------
+
 function empleado() {
     var elems = document.querySelectorAll('.autocomplete');
     var instances = M.Autocomplete.init(elems, {
@@ -55,3 +57,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+//--------------- /AUTO COMPLETE----------------------------------------

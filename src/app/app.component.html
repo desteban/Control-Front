@@ -18,17 +18,16 @@
           <!-- /EMPLEADO -->
 
           <li *ngIf="identity && identity.nombre"><a class='dropdown-trigger' data-target='Perfil'>
-            <i class="material-icons right">account_circle</i> {{identity.nombre + ' ' + identity.apellido}} </a></li>
+            <i class="material-icons right">account_circle</i> {{identity.nombre + ' ' + identity.apellido}} </a>
+            <ul id="Perfil" class="dropdown-content" *ngIf="identity && identity.nombre">
+                <li><a href="#"><i class="material-icons right">cloud_upload</i>Subir foto</a></li>
+                <li><a [routerLink]="['/logout/1']" routerLinkActive="router-link-active"  ><i class="material-icons right">exit_to_app</i>Salir</a></li>
+              </ul>
+            </li>
+          <li><a *ngIf="identity && identity.nombre" [routerLink]="[ '/logout/1' ]"><i class="material-icons right">exit_to_app</i>Salir</a></li>
         </ul>
       </div>
     </nav>
-
-    <ul id="Perfil" class="dropdown-content">
-      <li><a href="#"><i class="material-icons right">cloud_upload</i>Subir foto</a></li>
-      <li><a [routerLink]="['/logout/1']" routerLinkActive="router-link-active"  ><i class="material-icons right">exit_to_app</i>Salir</a></li>
-    </ul>
-
-
   
     <!-- MENU MOVIL -->
     <ul class="sidenav collapsible" id="mobile-demo">
@@ -42,11 +41,11 @@
           <div class="collapsible-body"></div>
         </li>
 
+      <!-- MENU EMPLEADO -->
       <li *ngIf="identity && identity.nombre && identity.rol">
         <div class="collapsible-header"><i class="material-icons">work</i>acciones</div>
         <div class="collapsible-body">
           <ul>
-            <!-- MENU EMPLEADO -->
             <li>
               <ul>
                 <li><a href="#" onclick="ocultar()"><i class="material-icons">event_note</i>Prestamo</a></li>                
@@ -54,22 +53,22 @@
                 <li><a class="item" [routerLink]="['/persona/crear']" routerLinkActive="router-link-active"  onclick="ocultar()"><i class="material-icons">person_add</i>Crear persona</a></li>
                 </ul>
               </li>
-              <!-- /MENU EMPLEADO -->                
             </ul>
           </div>
         </li>
+        <!-- /MENU EMPLEADO -->                
         
+      <!-- MENU PERFIL -->
       <li *ngIf="identity && identity.nombre">
         <div class="collapsible-header"><i class="material-icons">account_circle</i>{{identity.nombre + ' ' + identity.apellido}}</div>
         <div class="collapsible-body">
           <ul>
-            <!-- MENU PERFIL -->
-              <li><a class="item" href="#" onclick="ocultar()"><i class="material-icons">cloud_upload</i>Subir Foto de perfil</a></li>
+              <li><a href="#" onclick="ocultar()"><i class="material-icons">settings</i>Perfil</a></li>
               <li><a [routerLink]="['/logout/1']" onclick="ocultar()"><i class="material-icons">exit_to_app</i>Salir</a></li>
-            <!-- /MENU PERFIL -->
             </ul>
           </div>
         </li>
+        <!-- /MENU PERFIL -->
     </ul>
     <!-- /MENU MOVIL -->
 </header>

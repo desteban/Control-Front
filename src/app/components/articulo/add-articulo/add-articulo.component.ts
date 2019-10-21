@@ -4,12 +4,13 @@ import * as Material from "../../../M.js"
 import { global } from "../../../services/global";
 import { UserService } from "../../../services/UserService";
 import { ArticuloService } from "../../../services/ArticuloService";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-add-articulo',
   templateUrl: './add-articulo.component.html',
   styleUrls: ['./add-articulo.component.scss'],
-  providers:[
+  providers: [
     UserService,
     ArticuloService
   ]
@@ -28,7 +29,8 @@ export class AddArticuloComponent implements OnInit {
 
   constructor(
     private _userService: UserService,
-    private _articuloService: ArticuloService
+    private _articuloService: ArticuloService,
+    private _router:Router
   ) {
     this.articulo = Articulos.articuloDefault()
     this.M = Material.getM()
@@ -46,25 +48,6 @@ export class AddArticuloComponent implements OnInit {
       toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
       toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
     }
-
-    this.afuConfig = {
-      multiple: false,
-      formatsAllowed: ".jpg,.png",
-      maxSize: "50", //tamaño en mb
-      uploadAPI:  {
-        url: global.Apiurl+'Articulo/upload/'+this.articulo.id,
-        headers: {
-       "Auth" : this._userService.getToken()
-        }
-      },
-      theme: "attachPin",
-      hideProgressBar: false,
-      hideResetBtn: true,
-      hideSelectBtn: false,
-      replaceTexts: {
-        attachPinBtn: 'Sube una foto'
-      }
-    }
   }
 
   onSubmit() {
@@ -73,7 +56,10 @@ export class AddArticuloComponent implements OnInit {
       response => {
 
         console.log(response)
-      }, 
+        this.articulo.id = response.articulo.id
+        console.log(`El id es: ${this.articulo.id}`)
+        this.optionUpload()
+      },
       error => {
         this.M.toast({ html: `<span>${error.error.message}</span>`, classes: 'rounded toatPers' })
       }
@@ -85,24 +71,34 @@ export class AddArticuloComponent implements OnInit {
     document.getElementById('fileName').classList.toggle('hide')
     document.getElementById('btnUpload').classList.toggle('hide')
     document.getElementById('btnCancel').classList.toggle('hide')
+  }
 
-    //pasar valor
-    this.input = document.getElementById('file')
+  upload(datos) {
+    let response = JSON.parse(datos.response)
 
-    if(this.input.files[0].size <= this.mb()){ //
-      this.dirPicture = this.input.files[0].name
-    }else{
-      this.dirPicture = 'La imagen pesa demasiado'
-      this.errorFile = true
+    this.M.toast({ html: `<span>${response.message}</span>`, classes: 'rounded toatPers' })
+    this._router.navigate(['inicio'])
+  }
+
+  private optionUpload(){
+    this.afuConfig = {
+      multiple: false,
+      formatsAllowed: ".jpg,.png",
+      maxSize: this.peso, //tamaño en mb
+      uploadAPI: {
+        url: global.Apiurl + 'Articulo/upload/' + this.articulo.id,
+        headers: {
+          "Auth": this._userService.getToken()
+        }
+      },
+      theme: "attachPin",
+      hideProgressBar: false,
+      hideResetBtn: true,
+      hideSelectBtn: false,
+      replaceTexts: {
+        attachPinBtn: 'Sube una foto'
+      }
     }
-  }
-
-  upload(datos){
-    console.log(datos)
-  }
-
-  private mb(){
-    return this.peso * 1000000
   }
 
 }
