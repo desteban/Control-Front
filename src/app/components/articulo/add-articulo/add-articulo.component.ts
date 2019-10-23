@@ -50,15 +50,14 @@ export class AddArticuloComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  onSubmit(form) {
 
     this._articuloService.createArticulo(this.articulo, this.token).subscribe(
       response => {
 
-        console.log(response)
         this.articulo.id = response.articulo.id
-        console.log(`El id es: ${this.articulo.id}`)
         this.optionUpload()
+        form.reset()
       },
       error => {
         this.M.toast({ html: `<span>${error.error.message}</span>`, classes: 'rounded toatPers' })
@@ -77,7 +76,10 @@ export class AddArticuloComponent implements OnInit {
     let response = JSON.parse(datos.response)
 
     this.M.toast({ html: `<span>${response.message}</span>`, classes: 'rounded toatPers' })
-    this._router.navigate(['inicio'])
+
+    if(response.code == 200){
+      this.clear()
+    }
   }
 
   private optionUpload(){
@@ -92,13 +94,21 @@ export class AddArticuloComponent implements OnInit {
         }
       },
       theme: "attachPin",
-      hideProgressBar: false,
+      hideProgressBar: true,
       hideResetBtn: true,
       hideSelectBtn: false,
       replaceTexts: {
         attachPinBtn: 'Sube una foto'
       }
     }
+
+    document.getElementById('clearArt').addEventListener('click', () => {
+      this.M.toast({ html: `<span>hola</span>`, classes: 'rounded toatPers' })
+      this.clear()
+    })
   }
 
+  clear(){
+    this.articulo = Articulos.articuloDefault()
+  }
 }
