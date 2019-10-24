@@ -64,8 +64,8 @@
 
     </form>
 
-    <div class="row">
-        <div class="col s12 space center" *ngIf="articulo.id != 0">
+    <div class="row" *ngIf="articulo.id != 0">
+        <div class="col s12 space center">
             <p class="alert">El articulo fue creado, ¿deseas agregar una imagen?, la imagen no puede pesar más de {{peso}}MB</p>
             <angular-file-uploader
                 [config]="afuConfig"

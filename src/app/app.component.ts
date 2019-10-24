@@ -15,31 +15,35 @@ import * as Material from "./M.js"
 })
 export class AppComponent implements OnInit, DoCheck {
 
-  
+
   public title = 'Control-Front';
   public token;
   public identity
   public M;
-  
+
   constructor(
-    public _userService: UserService
-    ){
-      this.getIdentity()
-      this.M = Material.getM()
-    }
-    
-    ngOnInit() {
-      this.getIdentity()
-      console.log('app cargada')
-    }
-
-    ngDoCheck() {
-      this.getIdentity()
-    }
-
-    private getIdentity(){
-      this.token = this._userService.getToken()
-      this.identity = this._userService.getIdentity()
-    }
-
+    public _userService: UserService,
+  ) {
+    this.getIdentity()
+    this.M = Material.getM()
   }
+
+  ngOnInit() {
+    this.getIdentity()
+    console.log('app cargada')
+  }
+
+  ngDoCheck() {
+    this.getIdentity()
+  }
+
+  private getIdentity() {
+    this.token = this._userService.getToken()
+    this.identity = this._userService.getIdentity()
+  }
+
+  change(){
+    document.getElementById('Perfil').classList.toggle('ondropdow')
+  }
+
+}

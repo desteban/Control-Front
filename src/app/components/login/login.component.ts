@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     //cerrar secion cuando llega sure por la url
     this.logout()
+    this._userService.validate()
   }
 
   onSubmit(form) {
@@ -59,7 +60,7 @@ export class LoginComponent implements OnInit {
 
               //vaciar el formulario
               form.reset()
-              this._router.navigate(['inicio'])
+              //window.location.reload()
             },
             error => {  }
           )

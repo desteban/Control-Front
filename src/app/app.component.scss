@@ -5,3 +5,20 @@
 nav{
     margin-bottom: 20px;
 }
+
+.nav li ul {
+    display:none;
+    position:absolute;
+    min-width:140px;
+    background-color: #1565c0;
+    font-size: 15px;
+    max-width: 160px;
+}
+
+.nav li ul > li{
+    width: 100%;
+}
+
+.nav li:hover > ul{
+    display: block;
+}

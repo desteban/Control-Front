@@ -26,7 +26,7 @@ import { UpdatePersonaComponent } from './components/usuario/update-persona/upda
     AddPersonaComponent,
     AddArticuloComponent,
     UpdateArticuloComponent,
-    UpdatePersonaComponent
+    UpdatePersonaComponent,
   ],
   imports: [
     BrowserModule,

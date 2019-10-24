@@ -32,4 +32,7 @@ export class ArticuloService {
 
         return this._http.post(this.url + 'Articulo', params, { headers: header })
     }
+
+    getAllArticulos(token){
+    }
 }
