@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../../services/UserService";
 import { ArticuloService } from "../../../services/ArticuloService";
+import { Articulos } from "../../../models/Articulos";
+import { global } from "../../../services/global";
 import * as Material from "../../../M.js";
 
 @Component({
@@ -15,6 +17,9 @@ import * as Material from "../../../M.js";
 export class ListadoComponent implements OnInit {
 
   private M;
+  private token;
+  public articulos: Array<Articulos>
+  public url: string
 
   constructor(
     private _userService: UserService,
@@ -25,7 +30,25 @@ export class ListadoComponent implements OnInit {
 
   ngOnInit() {
 
+    this.url = global.ImageArticulo
     this._userService.sure(true)
+    
+    this.token = this._userService.getToken()
+    this.getArticulos()
+  }
+
+  private getArticulos(){
+    this._articuloService.getAllArticulos(this.token).subscribe(
+      response => {
+        if(response.status == "succes"){
+          this.articulos = response.articulos
+          console.log(this.articulos)
+        }
+      },
+      error => {
+        console.error(error)
+      }
+    )
   }
 
 }

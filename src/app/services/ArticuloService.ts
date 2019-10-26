@@ -27,12 +27,17 @@ export class ArticuloService {
             'Content-Type': 'application/x-www-form-urlencoded'
         })*/
 
-        let header = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
-                                        .set('Auth', this.token);
+        let header = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+            .set('Auth', this.token);
 
         return this._http.post(this.url + 'Articulo', params, { headers: header })
     }
 
-    getAllArticulos(token){
+    getAllArticulos(token): Observable<any> {
+
+        let headers = new HttpHeaders().set('Content-Type', 'aplication/x-www-form-urlencoded')
+            .set('Auth', token)
+
+        return this._http.get(this.url + 'Articulo', { headers: headers })
     }
 }
