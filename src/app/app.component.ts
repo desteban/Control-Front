@@ -1,5 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { UserService } from "./services/UserService";
+import { global } from "./services/global";
 import * as Material from "./M.js"
 
 /**
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit, DoCheck {
   public token;
   public identity
   public M;
+  public url:string;
 
   constructor(
     public _userService: UserService,
@@ -31,6 +33,7 @@ export class AppComponent implements OnInit, DoCheck {
   ngOnInit() {
     this.getIdentity()
     console.log('app cargada')
+    this.url = global.Avatar
   }
 
   ngDoCheck() {

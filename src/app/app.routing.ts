@@ -11,6 +11,7 @@ import { AddPersonaComponent } from "./components/add-persona/add-persona.compon
 import { AddArticuloComponent } from "./components/articulo/add-articulo/add-articulo.component";
 import { ListadoComponent } from "./components/articulo/listado/listado.component";
 import { UpdateArticuloComponent } from "./components/articulo/update-articulo/update-articulo.component";
+import { PerfilComponent } from "./components/perfil/perfil.component";
 
 //DEFINIR RUTAS
 const appRoutes: Routes = [
@@ -18,11 +19,12 @@ const appRoutes: Routes = [
     { path: 'inicio', component: HomeComponent },
     { path: 'persona/crear', component: AddPersonaComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'perfil', component: PerfilComponent },
     { path: 'logout/:sure', component: LoginComponent },
     { path: 'articulo/nuevo', component: AddArticuloComponent },
     { path: 'articulos', component: ListadoComponent },
     { path: 'articulo/editar', component: UpdateArticuloComponent },
-    {path: 'error', component:SureComponent },
+    { path: 'error', component: SureComponent },
     { path: '**', component: NotFoundComponent }
 ]
 

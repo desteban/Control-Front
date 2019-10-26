@@ -35,11 +35,12 @@
 
         <!-- PERFIL -->
         <li *ngIf="identity && identity.nombre"><a id="perfilbtn">
-            <i class="material-icons right">account_circle</i>
+            <i class="material-icons right" *ngIf="!identity.foto">account_circle</i>
+            <img src="{{url + identity.foto}}" class="avatar circle responsive-img" *ngIf="identity.foto">
             {{identity.nombre + ' ' + identity.apellido}}</a>
           
             <ul id="Perfil">
-                <li><a href="#" onclick="ocultar()"><i class="material-icons right">settings</i>Perfil</a></li>
+                <li><a [routerLink]="['/perfil']"><i class="material-icons right">settings</i>Perfil</a></li>
                 <li><a [routerLink]="['/logout/1']"><i class="material-icons right">exit_to_app</i>Salir</a></li>
             </ul>
           </li>
@@ -87,7 +88,7 @@
           class="material-icons">account_circle</i>{{identity.nombre + ' ' + identity.apellido}}</div>
       <div class="collapsible-body">
         <ul>
-          <li><a href="#" onclick="ocultar()"><i class="material-icons">settings</i>Perfil</a></li>
+          <li><a [routerLink]="['/perfil']"  onclick="ocultar()"><i class="material-icons">settings</i>Perfil</a></li>
           <li><a [routerLink]="['/logout/1']" onclick="ocultar()"><i class="material-icons">exit_to_app</i>Salir</a>
           </li>
         </ul>
