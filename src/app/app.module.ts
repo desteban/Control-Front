@@ -18,6 +18,7 @@ import { UpdatePersonaComponent } from './components/usuario/update-persona/upda
 import { ListadoComponent } from './components/articulo/listado/listado.component';
 import { SureComponent } from './components/error/sure/sure.component';
 import { NotFoundComponent } from './components/error/not-found/not-found.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { NotFoundComponent } from './components/error/not-found/not-found.compon
     ListadoComponent,
     SureComponent,
     NotFoundComponent,
+    PerfilComponent,
   ],
   imports: [
     BrowserModule,
