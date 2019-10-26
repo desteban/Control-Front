@@ -5,9 +5,11 @@ import { Routes, RouterModule } from "@angular/router";
 //COMPONENTES
 import { HomeComponent } from "./components/home/home.component";
 import { LoginComponent } from "./components/login/login.component";
-import { ErrorComponent } from "./components/error/error.component";
+import { NotFoundComponent } from "./components/error/not-found/not-found.component";
+import { SureComponent } from "./components/error/sure/sure.component";
 import { AddPersonaComponent } from "./components/add-persona/add-persona.component";
 import { AddArticuloComponent } from "./components/articulo/add-articulo/add-articulo.component";
+import { ListadoComponent } from "./components/articulo/listado/listado.component";
 import { UpdateArticuloComponent } from "./components/articulo/update-articulo/update-articulo.component";
 
 //DEFINIR RUTAS
@@ -18,8 +20,10 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'logout/:sure', component: LoginComponent },
     { path: 'articulo/nuevo', component: AddArticuloComponent },
-    { path: 'articulos', component: UpdateArticuloComponent },
-    { path: '**', component: ErrorComponent }
+    { path: 'articulos', component: ListadoComponent },
+    { path: 'articulo/editar', component: UpdateArticuloComponent },
+    {path: 'error', component:SureComponent },
+    { path: '**', component: NotFoundComponent }
 ]
 
 //exportar rutas

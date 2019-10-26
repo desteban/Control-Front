@@ -10,9 +10,10 @@ nav{
     display:none;
     position:absolute;
     min-width:140px;
-    background-color: #1565c0;
+    background-color: rgb(21, 101, 192);//#1565c0
     font-size: 15px;
     max-width: 160px;
+    z-index: 100;
 }
 
 .nav li ul > li{

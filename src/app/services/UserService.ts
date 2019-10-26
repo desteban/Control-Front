@@ -85,11 +85,20 @@ export class UserService {
         }
     }
 
-    sure(){
+    sure(empleado = false){
         let identity = this.getIdentity()
 
+        //validar si cuenta con credenciales
         if(identity == null){
             this._router.navigate(['login'])
+        }else {
+            //validar si la ruta solo se acede por empleados
+            if(empleado == true){
+                //verificar si es empleado
+                if(!identity.rol){
+                    this._router.navigate(['error'])
+                }
+            }
         }
     }
 }

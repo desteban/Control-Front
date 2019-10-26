@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
 
               //vaciar el formulario
               form.reset()
-              //window.location.reload()
+              this._router.navigate(['inicio'])
             },
             error => {  }
           )

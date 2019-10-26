@@ -94,7 +94,7 @@ export class AddArticuloComponent implements OnInit {
         }
       },
       theme: "attachPin",
-      hideProgressBar: true,
+      hideProgressBar: false,
       hideResetBtn: true,
       hideSelectBtn: false,
       replaceTexts: {
