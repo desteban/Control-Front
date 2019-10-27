@@ -37,6 +37,21 @@ export class PerfilComponent implements OnInit {
 
   onSubmit(form){
 
+    this._userService.update(this.persona, this._userService.getToken())
+    .subscribe(
+      response => {
+        if(response.status == "succes" && response.code == 200){
+          this.M.toast({html: 'Contraseña actualizada', classes: 'rounded'})
+
+          this.persona.password = null
+        }else{
+          this.M.toast({ html: response.message, classes: 'rounded' })
+        }
+      }, 
+      error => {
+        console.error(error)
+      }
+    )
   }
 
   getIdentity(){
@@ -46,6 +61,7 @@ export class PerfilComponent implements OnInit {
     this.persona.nombre = this.identity.nombre
     this.persona.apellido = this.identity.apellido
     this.persona.cc = this.identity.cc
+    this.persona.foto = this.identity.foto
   }
 
   uploader(){

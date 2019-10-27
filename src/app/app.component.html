@@ -51,6 +51,7 @@
       </div>
       
     </nav>
+
   <!-- MENU MOVIL -->
   <ul class="sidenav collapsible" id="mobile-demo">
     <li onclick="ocultar()" [routerLink]="['/']">
@@ -84,8 +85,10 @@
 
     <!-- MENU PERFIL -->
     <li *ngIf="identity && identity.nombre">
-      <div class="collapsible-header"><i
-          class="material-icons">account_circle</i>{{identity.nombre + ' ' + identity.apellido}}</div>
+      <div class="collapsible-header">
+          <i class="material-icons right" *ngIf="!identity.foto">account_circle</i>
+          <img src="{{url + identity.foto}}" class="avatar circle responsive-img" *ngIf="identity.foto">
+          {{identity.nombre + ' ' + identity.apellido}}</div>
       <div class="collapsible-body">
         <ul>
           <li><a [routerLink]="['/perfil']"  onclick="ocultar()"><i class="material-icons">settings</i>Perfil</a></li>

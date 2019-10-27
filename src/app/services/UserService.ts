@@ -101,4 +101,15 @@ export class UserService {
             }
         }
     }
+
+    update(persona:Persona, token): Observable<any>{
+
+        let json = JSON.stringify(persona)
+        let params = `json=${json}`
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+            .set('Auth', token)
+
+        return this._http.put(this.url + 'personas/' +persona.id, params, {headers: headers})
+    }
 }
