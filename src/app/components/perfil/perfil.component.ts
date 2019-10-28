@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../services/UserService";
+import { IdentityGuard } from "../../services/identity.guard";
 import { Persona } from "../../models/Persona";
 import { global } from "../../services/global";
 import * as Material from "../../M.js"
@@ -8,7 +9,7 @@ import * as Material from "../../M.js"
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.scss'],
-  providers: [UserService]
+  providers: [UserService, IdentityGuard]
 })
 export class PerfilComponent implements OnInit {
 
@@ -19,13 +20,15 @@ export class PerfilComponent implements OnInit {
   private M;
 
   constructor(
-    private _userService: UserService
+    private _userService: UserService,
+    private _identityGuard: IdentityGuard
   ) { 
     this.persona = Persona.PersonaDefault()
   }
 
   ngOnInit() {
-    this._userService.sure()
+    //this._userService.sure()
+    this._identityGuard.sure('/login/perfil')
     
     //obtener datos del local storage
     this.getIdentity()

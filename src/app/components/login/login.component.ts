@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   private token: string
   private identity: any
   public M: any
+  private urlSucces;
 
   constructor(
     private _userService: UserService,
@@ -33,6 +34,10 @@ export class LoginComponent implements OnInit {
     //cerrar secion cuando llega sure por la url
     this.logout()
     this._userService.validate()
+    //obtener ruta
+    this._route.params.subscribe(params => {
+      this.urlSucces = params['url']+''
+    })
   }
 
   onSubmit(form) {
@@ -60,7 +65,13 @@ export class LoginComponent implements OnInit {
 
               //vaciar el formulario
               form.reset()
-              this._router.navigate(['inicio'])
+
+              //validar url de Redireccion
+              if(this.urlSucces){
+                this.verifyUrl()
+              }else{
+                this._router.navigate(['inicio'])
+              }
             },
             error => {  }
           )
@@ -86,5 +97,20 @@ export class LoginComponent implements OnInit {
         this._router.navigate(['inicio'])
       }
     })
+  }
+
+  verifyUrl(){
+      switch (this.urlSucces) {
+        case 'perfil':
+            this._router.navigate(['perfil'])
+          break;
+
+          case 'articulos':
+            this._router.navigate(['articulos'])
+            break;
+      
+        default:
+          break;
+      }
   }
 }

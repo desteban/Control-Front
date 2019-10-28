@@ -20,7 +20,8 @@
             <!-- IMAGEN -->
             <div class="row">
                 <div class="col s12 center">
-                    <img src="{{url + identity.foto}}" alt="Foto de perfil">
+                    <img *ngIf="persona.foto" src="{{url + identity.foto}}" alt="Foto de perfil">
+                    <img *ngIf="!persona.foto" src="https://screenshotlayer.com/images/assets/placeholder.png" alt="Foto de perfil">
                 </div>
                 <div class="col s12 space center">
                     <angular-file-uploader

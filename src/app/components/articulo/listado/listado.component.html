@@ -14,7 +14,8 @@
         <div class="col s12 m6">
             <div class="card">
                 <div class="card-image">
-                    <img class="adapt" src="{{url + articulo.foto}}" alt="{{articulo.nombre}}">
+                    <img *ngIf="articulo.foto" class="adapt" src="{{url + articulo.foto}}" alt="{{articulo.nombre}}">
+                    <img *ngIf="!articulo.foto" class="adapt" src="https://screenshotlayer.com/images/assets/placeholder.png" alt="No se encontro la imaagen">
                 </div>
 
                 <!-- CONTENIDO -->

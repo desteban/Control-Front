@@ -3,9 +3,9 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">face</i>
-                <input type="number" class="validate" id="C.C." name="C.C." 
+                <input type="number" class="validate" id="user" name="C.C." 
                     #cc="ngModel" [(ngModel)]="persona.cc" required autocomplete="off">
-                <label for="C.C.">C.C.</label>
+                <label for="user">C.C.</label>
                 <label *ngIf="!cc.valid && cc.touched" for="C.C.">C.C. obligatorio</label>
             </div>
         </div>

@@ -19,6 +19,7 @@ const appRoutes: Routes = [
     { path: 'inicio', component: HomeComponent },
     { path: 'persona/crear', component: AddPersonaComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'login/:url', component: LoginComponent },
     { path: 'perfil', component: PerfilComponent },
     { path: 'logout/:sure', component: LoginComponent },
     { path: 'articulo/nuevo', component: AddArticuloComponent },
