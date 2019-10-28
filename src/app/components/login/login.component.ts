@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
     this._route.params.subscribe(params => {
       this.urlSucces = params['url']+''
     })
+    console.log()
   }
 
   onSubmit(form) {
@@ -71,8 +72,6 @@ export class LoginComponent implements OnInit {
               //validar url de Redireccion
               if(this.urlSucces){
                 this._identiyGuard.verifyUrl(this.urlSucces)
-              }else{
-                this._router.navigate(['inicio'])
               }
             },
             error => {  }

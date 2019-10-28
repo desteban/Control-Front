@@ -28,7 +28,7 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit() {
     //this._userService.sure()
-    this._identityGuard.sure('/login/perfil')
+    this._identityGuard.sure(true, '/login/perfil')
     
     //obtener datos del local storage
     this.getIdentity()

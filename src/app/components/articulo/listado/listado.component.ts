@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../../services/UserService";
 import { ArticuloService } from "../../../services/ArticuloService";
+import { IdentityGuard } from "../../../services/identity.guard";
 import { Articulos } from "../../../models/Articulos";
 import { global } from "../../../services/global";
 import * as Material from "../../../M.js";
@@ -11,7 +12,8 @@ import * as Material from "../../../M.js";
   styleUrls: ['./listado.component.scss'],
   providers: [
     UserService,
-    ArticuloService
+    ArticuloService,
+    IdentityGuard
   ]
 })
 export class ListadoComponent implements OnInit {
@@ -23,7 +25,8 @@ export class ListadoComponent implements OnInit {
 
   constructor(
     private _userService: UserService,
-    private _articuloService: ArticuloService
+    private _articuloService: ArticuloService,
+    private _identityGuard: IdentityGuard
   ) {
     this.M = Material.getM()
    }
@@ -31,7 +34,7 @@ export class ListadoComponent implements OnInit {
   ngOnInit() {
 
     this.url = global.ImageArticulo
-    this._userService.sure(true)
+    this._identityGuard.sure(true,'login/articulos', true)
     
     this.token = this._userService.getToken()
     this.getArticulos()

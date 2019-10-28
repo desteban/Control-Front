@@ -18,7 +18,9 @@ export class IdentityGuard {
         let identity = this._userService.getIdentity()
 
         if(!acces){
-            this._router.navigate(['perfil'])
+            if(identity != null){
+                this._router.navigate(['perfil'])
+            }
         }else{
             //validar credenciales
             if(identity == null){
@@ -36,7 +38,7 @@ export class IdentityGuard {
 
     }
 
-    verifyUrl(urlSucces){
+    verifyUrl(urlSucces, urldefault:string = 'inicio'){
         switch (urlSucces) {
           case 'perfil':
               this._router.navigate(['perfil'])
@@ -47,6 +49,7 @@ export class IdentityGuard {
               break;
         
           default:
+              this._router.navigate([urldefault])
             break;
         }
     }
