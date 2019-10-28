@@ -10,23 +10,44 @@ export class IdentityGuard {
         private _userService: UserService
     ){}
 
-    sure(url = 'login', empleado = false){
+    //rutas reguras
+    //acces: se puede acceder a la ruta si cuenta con credenciales
+    sure(acces: boolean = true ,url: string = 'login', empleado: boolean = false){
         
         //obtener credenciales
         let identity = this._userService.getIdentity()
 
-        //validar credenciales
-        if(identity == null){
-            this._router.navigate([url])
+        if(!acces){
+            this._router.navigate(['perfil'])
         }else{
-            //validar si la ruta solo se acede por empleados
-            if(empleado){
-                //valar si es un empleado
-                if(!identity.rol){
-                    this._router.navigate(['error'])
+            //validar credenciales
+            if(identity == null){
+                this._router.navigate([url])
+            }else{
+                //validar si la ruta solo se acede por empleados
+                if(empleado){
+                    //valar si es un empleado
+                    if(!identity.rol){
+                        this._router.navigate(['error'])
+                    }
                 }
             }
         }
+
     }
-    
+
+    verifyUrl(urlSucces){
+        switch (urlSucces) {
+          case 'perfil':
+              this._router.navigate(['perfil'])
+            break;
+  
+            case 'articulos':
+              this._router.navigate(['articulos'])
+              break;
+        
+          default:
+            break;
+        }
+    }
 }

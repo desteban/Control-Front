@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../services/UserService";
+import { IdentityGuard } from "../../services/identity.guard";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import * as Material from "../../M.js"
 
@@ -10,7 +11,7 @@ import { Persona } from "../../models/persona";
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [UserService]
+  providers: [UserService, IdentityGuard]
 })
 export class LoginComponent implements OnInit {
 
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private _userService: UserService,
     private _router: Router,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _identiyGuard: IdentityGuard
   ) {
     this.persona = Persona.PersonaDefault()
     this.M = Material.getM()
@@ -33,7 +35,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     //cerrar secion cuando llega sure por la url
     this.logout()
-    this._userService.validate()
+    this._identiyGuard.sure(false)
     //obtener ruta
     this._route.params.subscribe(params => {
       this.urlSucces = params['url']+''
@@ -68,7 +70,7 @@ export class LoginComponent implements OnInit {
 
               //validar url de Redireccion
               if(this.urlSucces){
-                this.verifyUrl()
+                this._identiyGuard.verifyUrl(this.urlSucces)
               }else{
                 this._router.navigate(['inicio'])
               }
@@ -97,20 +99,5 @@ export class LoginComponent implements OnInit {
         this._router.navigate(['inicio'])
       }
     })
-  }
-
-  verifyUrl(){
-      switch (this.urlSucces) {
-        case 'perfil':
-            this._router.navigate(['perfil'])
-          break;
-
-          case 'articulos':
-            this._router.navigate(['articulos'])
-            break;
-      
-        default:
-          break;
-      }
   }
 }

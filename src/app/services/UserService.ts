@@ -76,32 +76,6 @@ export class UserService {
         localStorage.removeItem('token')
     }
 
-    validate(route: string = 'inicio'){
-        let identity = this.getIdentity()
-        let status = false
-
-        if(identity != null){
-            this._router.navigate([route])
-        }
-    }
-
-    sure(empleado = false){
-        let identity = this.getIdentity()
-
-        //validar si cuenta con credenciales
-        if(identity == null){
-            this._router.navigate(['login'])
-        }else {
-            //validar si la ruta solo se acede por empleados
-            if(empleado == true){
-                //verificar si es empleado
-                if(!identity.rol){
-                    this._router.navigate(['error'])
-                }
-            }
-        }
-    }
-
     update(persona:Persona, token): Observable<any>{
 
         let json = JSON.stringify(persona)
