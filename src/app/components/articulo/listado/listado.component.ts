@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 import { UserService } from "../../../services/UserService";
 import { ArticuloService } from "../../../services/ArticuloService";
 import { IdentityGuard } from "../../../services/identity.guard";
@@ -26,7 +27,8 @@ export class ListadoComponent implements OnInit {
   constructor(
     private _userService: UserService,
     private _articuloService: ArticuloService,
-    private _identityGuard: IdentityGuard
+    private _identityGuard: IdentityGuard,
+    private _router: Router
   ) {
     this.M = Material.getM()
    }
@@ -54,4 +56,7 @@ export class ListadoComponent implements OnInit {
     )
   }
 
+  updateArticulo(id){
+    this._router.navigate([`articulo/editar/${id}`])
+  }
 }

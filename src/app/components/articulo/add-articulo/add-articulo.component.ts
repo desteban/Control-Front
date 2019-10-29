@@ -19,7 +19,6 @@ export class AddArticuloComponent implements OnInit {
 
   public articulo: Articulos
   public dirPicture: String
-  private input: any
   public M: any
   public options: Object;
   public afuConfig;

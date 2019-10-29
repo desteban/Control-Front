@@ -40,4 +40,11 @@ export class ArticuloService {
 
         return this._http.get(this.url + 'Articulo', { headers: headers })
     }
+
+    getArticulo(id: number): Observable<any> {
+
+        let header = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+
+        return this._http.get(this.url + 'Articulo/' + id)
+    }
 }

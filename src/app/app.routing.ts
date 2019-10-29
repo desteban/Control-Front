@@ -24,7 +24,7 @@ const appRoutes: Routes = [
     { path: 'logout/:sure', component: LoginComponent },
     { path: 'articulo/nuevo', component: AddArticuloComponent },
     { path: 'articulos', component: ListadoComponent },
-    { path: 'articulo/editar', component: UpdateArticuloComponent },
+    { path: 'articulo/editar/:id', component: UpdateArticuloComponent },
     { path: 'error', component: SureComponent },
     { path: '**', component: NotFoundComponent }
 ]

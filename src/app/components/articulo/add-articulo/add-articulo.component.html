@@ -1,27 +1,28 @@
 <div class="col s12">
 
-    <form class="col s12 m7 offset-m3 form-upload" #articuloForm="ngForm" (submit)="onSubmit(articuloForm)" *ngIf="articulo.id == 0">
+    <form class="col s12 m7 offset-m3 form-upload" #articuloForm="ngForm" (submit)="onSubmit(articuloForm)"
+        *ngIf="articulo.id == 0">
 
         <!-- NOMBRE, CANTIDAD Y PRECIO -->
         <div class="row">
 
             <div class="input-field col s12 m4">
-                <input type="text" class="validate" name="nombre" id="nombre"
-                #nombre="ngModel" [(ngModel)]="articulo.nombre" required>
+                <input type="text" class="validate" name="nombre" id="nombre" #nombre="ngModel"
+                    [(ngModel)]="articulo.nombre" required>
                 <label for="nombre">Nombre</label>
                 <label for="nombre" *ngIf="!nombre.valid && nombre.touched">Nombre obligatorio</label>
             </div>
 
             <div class="input-field col s12 m4">
-                <input type="number" class="validate" name="cantidad" id="cantidad"
-                #cantidad="ngModel" [(ngModel)]="articulo.cantidad" required>
+                <input type="number" class="validate" name="cantidad" id="cantidad" #cantidad="ngModel"
+                    [(ngModel)]="articulo.cantidad" required>
                 <label for="cantidad">Cantidad</label>
                 <label for="cantidad" *ngIf="!cantidad.valid && cantidad.touched">Cantidad Obligatoria</label>
             </div>
 
             <div class="input-field col s12 m4">
-                <input type="number" name="precio" id="precio" class="validate"
-                #precio="ngModel" [(ngModel)]="articulo.precio" required>
+                <input type="number" name="precio" id="precio" class="validate" #precio="ngModel"
+                    [(ngModel)]="articulo.precio" required>
                 <label for="precio">Precio</label>
                 <label for="precio" *ngIf="!precio.valid && precio.valid">Precio Obligatorio</label>
             </div>
@@ -31,8 +32,8 @@
         <!-- DESCRIPTION -->
         <div class="row">
             <div class="col s12">
-                <textarea [froalaEditor]="options" name="description"
-                #description="ngModel" [(ngModel)]="articulo.descripcion"></textarea>
+                <textarea [froalaEditor]="options" name="description" #description="ngModel"
+                    [(ngModel)]="articulo.descripcion"></textarea>
             </div>
         </div>
         <!-- /DESCRIPTION -->
@@ -55,7 +56,7 @@
             /IMAGEN -->
 
             <div class="row center">
-                    <input type="submit" value="Crear"  class="btn-large waves-effect waves-light center"
+                <input type="submit" value="Crear" class="btn-large waves-effect waves-light center"
                     [disabled]="articuloForm.invalid">
             </div>
 
@@ -66,11 +67,9 @@
 
     <div class="row" *ngIf="articulo.id != 0">
         <div class="col s12 space center">
-            <p class="alert">El articulo fue creado, ¿deseas agregar una imagen?, la imagen no puede pesar más de {{peso}}MB</p>
-            <angular-file-uploader
-                [config]="afuConfig"
-                [resetUpload]=resetVar
-                (ApiResponse)="upload($event)">
+            <p class="alert">El articulo fue creado, ¿deseas agregar una imagen?, la imagen no puede pesar más de
+                {{peso}}MB</p>
+            <angular-file-uploader [config]="afuConfig" [resetUpload]=resetVar (ApiResponse)="upload($event)">
             </angular-file-uploader>
         </div>
         <div class="row">
