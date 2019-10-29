@@ -27,4 +27,18 @@ nav{
 img.avatar{
     width: 30px;
     height: auto;
+    margin-right: 1rem;
+}
+
+img.avatar-big{
+    position: relative;
+    top: 10px;
+}
+//------------  MENU MOVIL --------------
+#mobile-demo li a{
+    color: black;
+}
+
+#mobile-demo li ul a{
+    color: rgb(94, 92, 92);
 }

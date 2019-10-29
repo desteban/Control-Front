@@ -27,7 +27,7 @@
           <a><i class="material-icons right">event_note</i>Prestamo</a>
           <ul>
               <li><a [routerLink]="['/articulo/nuevo']"><i class="material-icons right">add</i>Crear</a></li>
-              <li><a [routerLink]="['/articulo/nuevo']"><i class="material-icons right">add</i>Agregar</a></li>
+              <li><a [routerLink]="['/articulo/nuevo']"><i class="material-icons right">edit</i>Entregar</a></li>
           </ul>
         </li>
         <!-- /PRESTAMO -->
@@ -36,7 +36,7 @@
         <!-- PERFIL -->
         <li *ngIf="identity && identity.nombre"><a id="perfilbtn">
             <i class="material-icons right" *ngIf="!identity.foto">account_circle</i>
-            <img src="{{url + identity.foto}}" class="avatar circle responsive-img" *ngIf="identity.foto">
+            <img src="{{url + identity.foto}}" class="avatar circle responsive-img avatar-big" *ngIf="identity.foto">
             {{identity.nombre + ' ' + identity.apellido}}</a>
           
             <ul id="Perfil">
@@ -55,32 +55,47 @@
   <!-- MENU MOVIL -->
   <ul class="sidenav collapsible" id="mobile-demo">
     <li onclick="ocultar()" [routerLink]="['/']">
-      <div class="collapsible-header"><a class="item"><i class="material-icons">home</i>Inicio</a></div>
+      <div class="collapsible-header"><a><i class="material-icons">home</i>Inicio</a></div>
       <div class="collapsible-body"></div>
     </li>
 
     <li *ngIf="identity == null" onclick="ocultar()" [routerLink]="['/login']">
-      <div class="collapsible-header"><a class="item"><i class="material-icons">face</i>Ingresar</a></div>
+      <div class="collapsible-header"><a><i class="material-icons">face</i>Ingresar</a></div>
       <div class="collapsible-body"></div>
     </li>
 
     <!-- MENU EMPLEADO -->
     <li *ngIf="identity && identity.nombre && identity.rol">
-      <div class="collapsible-header"><i class="material-icons">work</i>acciones</div>
+      <div class="collapsible-header">
+          <a [routerLink]="['/persona/crear']" routerLinkActive="router-link-active"
+          onclick="ocultar()"><i class="material-icons">person_add</i>Crear persona</a>
+      </div>
+      <div class="collapsible-body"></div>
+    </li>
+    <!-- PRESTAMO -->
+    <li *ngIf="identity && identity.nombre && identity.rol">
+      <div class="collapsible-header"><a><i class="material-icons">event_note</i>Prestamo</a></div>
       <div class="collapsible-body">
-        <ul>
-          <li>
-            <ul>
-              <li><a href="#" onclick="ocultar()"><i class="material-icons">event_note</i>Prestamo</a></li>
-              <li><a class="item" [routerLink]="['/articulo/nuevo']" routerLinkActive="router-link-active"
-                  onclick="ocultar()"><i class="material-icons">laptop_chromebook</i>Articulo</a></li>
-              <li><a class="item" [routerLink]="['/persona/crear']" routerLinkActive="router-link-active"
-                  onclick="ocultar()"><i class="material-icons">person_add</i>Crear persona</a></li>
-            </ul>
-          </li>
+        <ul onclick="ocultar()">
+          <li><a [routerLink]="['/articulo/nuevo']"><i class="material-icons">add</i>Crear</a></li>
+          <li><a [routerLink]="['/articulo/nuevo']"><i class="material-icons">edit</i>Entregar</a></li>
         </ul>
       </div>
     </li>
+    <!-- /PRESTAMO -->
+
+    <!-- ARTICULO -->
+    <li *ngIf="identity && identity.nombre && identity.rol">
+      <div class="collapsible-header"><a><i class="material-icons">laptop_chromebook</i>Articulos</a></div>
+      <div class="collapsible-body">
+        <ul onclick="ocultar()">
+          <li><a [routerLink]="['/articulo/nuevo']"><i class="material-icons">add</i>Agregar</a></li>
+          <li><a [routerLink]="['/articulo/editar']" ><i class="material-icons">edit</i>Modificar</a></li>
+          <li><a [routerLink]="['/articulos']" ><i class="material-icons">list</i>Listado</a></li>
+        </ul>
+      </div>
+    </li>
+    <!-- /ARTICULO -->
     <!-- /MENU EMPLEADO -->
 
     <!-- MENU PERFIL -->
