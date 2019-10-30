@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
     this._route.params.subscribe(params => {
       this.urlSucces = params['url']+''
     })
-    console.log()
   }
 
   onSubmit(form) {

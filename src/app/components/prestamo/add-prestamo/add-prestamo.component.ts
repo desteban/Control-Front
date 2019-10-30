@@ -34,6 +34,8 @@ export class AddPrestamoComponent implements OnInit {
 
   ngOnInit() {
 
+    this._identityGuard.sure(true,'/login/prestamo', true)
+    
     this.url = global.ImageArticulo
     this.personaData = Persona.PersonaDefault()
     this.prestamo = Prestamo.prestamoDefault()
@@ -52,7 +54,8 @@ export class AddPrestamoComponent implements OnInit {
         response => {
           this.M.toast({html: response.message, classes: 'rounded'})
           form.reset()
-          this.persona_status = null
+          this.persona_status = true
+          this.personaData.id = 0
         },
         error => {
           console.error(error)

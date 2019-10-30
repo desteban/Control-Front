@@ -21,4 +21,12 @@ export class PrestamoService {
 
         return this._http.post(global.Apiurl + 'Prestamo', params, { headers: headers })
     }
+
+    getPrestamos(codigo: number, token): Observable<any>{
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+        .set('Auth', token)
+
+        return this._http.get(`${global.Apiurl}Prestamo/${codigo}/all`, {headers: headers})
+    }
 }

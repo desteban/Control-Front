@@ -18,10 +18,6 @@ export class UserService {
         this.url = global.Apiurl
     }
 
-    test() {
-        return "UserService"
-    }
-
     register(persona: Persona): Observable<any> {
 
         //pasar datos a json

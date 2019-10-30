@@ -1,3 +1,6 @@
+import { Articulos } from './Articulos';
+import { Recargo } from './Recargo';
+
 export class Prestamo {
     constructor(
         public id: number,
@@ -8,12 +11,14 @@ export class Prestamo {
         public fecha_limite: any,
         public fecha_entrega: any,
         public visible: boolean,
-        public created_at: any
+        public created_at: any,
+        public articulo: Articulos,
+        public recargo: Array<Recargo>
     ) {
 
     }
 
     public static prestamoDefault(){
-        return new Prestamo(0,null,null,null,null,null,null,null,null)
+        return new Prestamo(0,null,null,null,null,null,null,null,null, Articulos.articuloDefault(), [])
     }
 }

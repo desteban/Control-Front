@@ -14,7 +14,7 @@ import * as Material from "../../../M.js";
   providers: [
     UserService,
     ArticuloService,
-    IdentityGuard
+    IdentityGuard,
   ]
 })
 export class ListadoComponent implements OnInit {
@@ -28,24 +28,24 @@ export class ListadoComponent implements OnInit {
     private _userService: UserService,
     private _articuloService: ArticuloService,
     private _identityGuard: IdentityGuard,
-    private _router: Router
+    private _router: Router,
   ) {
     this.M = Material.getM()
-   }
+  }
 
   ngOnInit() {
 
     this.url = global.ImageArticulo
-    this._identityGuard.sure(true,'login/articulos', true)
-    
+    this._identityGuard.sure(true, 'login/articulos', true)
+
     this.token = this._userService.getToken()
     this.getArticulos()
   }
 
-  private getArticulos(){
+  private getArticulos() {
     this._articuloService.getAllArticulos(this.token).subscribe(
       response => {
-        if(response.status == "succes"){
+        if (response.status == "succes") {
           this.articulos = response.articulos
         }
       },
@@ -55,7 +55,8 @@ export class ListadoComponent implements OnInit {
     )
   }
 
-  updateArticulo(id){
+  updateArticulo(id) {
     this._router.navigate([`articulo/editar/${id}`])
   }
+
 }

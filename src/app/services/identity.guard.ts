@@ -48,6 +48,14 @@ export class IdentityGuard {
                 this._router.navigate(['articulos'])
                 break;
 
+            case 'prestamo':
+                this._router.navigate(['prestamo'])
+                break;
+
+            case 'entrega':
+                this._router.navigate(['entrega'])
+                break;
+
             default:
                 this._router.navigate([urldefault])
                 break;

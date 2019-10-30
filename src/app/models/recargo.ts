@@ -6,7 +6,7 @@ export class Recargo {
         public fecha_pago: any,
         public total: number,
         public motivo: string,
-        public pagafo: boolean
+        public pagado: boolean
     ) {
 
     }

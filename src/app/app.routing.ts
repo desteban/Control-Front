@@ -13,6 +13,7 @@ import { ListadoComponent } from "./components/articulo/listado/listado.componen
 import { UpdateArticuloComponent } from "./components/articulo/update-articulo/update-articulo.component";
 import { PerfilComponent } from "./components/perfil/perfil.component";
 import { AddPrestamoComponent } from "./components/prestamo/add-prestamo/add-prestamo.component";
+import { EntregaComponent } from "./components/prestamo/entrega/entrega.component";
 
 //DEFINIR RUTAS
 const appRoutes: Routes = [
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
     { path: 'articulos', component: ListadoComponent },
     { path: 'articulo/editar/:id', component: UpdateArticuloComponent },
     { path: 'prestamo', component: AddPrestamoComponent },
+    { path: 'entrega', component: EntregaComponent },
     { path: 'error', component: SureComponent },
     { path: '**', component: NotFoundComponent }
 ]
