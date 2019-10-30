@@ -52,6 +52,7 @@ export class AddPrestamoComponent implements OnInit {
         response => {
           this.M.toast({html: response.message, classes: 'rounded'})
           form.reset()
+          this.persona_status = null
         },
         error => {
           console.error(error)
