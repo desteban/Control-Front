@@ -47,6 +47,11 @@ export class UserService {
         return this._http.post(this.url + 'login', params, { headers: headers })
     }
 
+    getPersona(codigo): Observable<any>{
+
+        return this._http.get(`${this.url}persona/${codigo}`)
+    }
+
     saveToken(token){
         localStorage.setItem('token', token)
     }

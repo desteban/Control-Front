@@ -17,12 +17,13 @@ import * as Material from "../../../M.js";
 })
 export class AddPrestamoComponent implements OnInit {
 
-  public estudiante: Persona
+  public personaData: Persona
   public prestamo: Prestamo
   public articulos: Array<Articulos>
   public url: string
   private M
   private carga: boolean
+  public persona_status: boolean
 
   constructor(
     private _identityGuard: IdentityGuard,
@@ -34,8 +35,9 @@ export class AddPrestamoComponent implements OnInit {
   ngOnInit() {
 
     this.url = global.ImageArticulo
-    this.estudiante = Persona.PersonaDefault()
+    this.personaData = Persona.PersonaDefault()
     this.prestamo = Prestamo.prestamoDefault()
+    this.persona_status = true
 
     this.M = Material.getM()
     this.carga = false
@@ -44,7 +46,19 @@ export class AddPrestamoComponent implements OnInit {
   }
 
   onSubmit(form){
-    console.log(this.prestamo)
+    if(this.persona_status){
+
+      this._prestamoService.addPrestamo(this.prestamo, this._userService.getToken()).subscribe(
+        response => {
+          console.log(response)
+        },
+        error => {
+          console.error(error)
+        }
+      )
+    }else{
+      this.M.toast({ html: 'Persona no registrada', classes: 'rounded'})
+    }
   }
 
   private getArticulos(){
@@ -77,6 +91,24 @@ export class AddPrestamoComponent implements OnInit {
         this.select()
       }
     }, 30);
+  }
+
+  findPersona(){
+    if(this.prestamo.codigo_persona){
+      this._userService.getPersona(this.prestamo.codigo_persona).subscribe(
+        response => {
+          this.persona_status = true
+          this.personaData.id = response.persona.id
+          this.personaData.nombre = response.persona.nombre
+          this.personaData.apellido = response.persona.apellido
+        },
+        error => { 
+          this.persona_status = false
+          this.personaData = Persona.PersonaDefault()
+        })
+    }else{
+      this.persona_status = false
+    }
   }
 
 }
