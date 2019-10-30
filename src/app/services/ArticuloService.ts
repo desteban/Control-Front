@@ -47,4 +47,15 @@ export class ArticuloService {
 
         return this._http.get(this.url + 'Articulo/' + id)
     }
+
+    updateArticulo(articulo: Articulos, token): Observable<any> {
+
+        let json = JSON.stringify(articulo)
+        let params = `json=${json}`
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+            .set('Auth', token)
+
+        return this._http.put(this.url + 'Articulo/' + articulo.id, params, { headers: headers })
+    }
 }

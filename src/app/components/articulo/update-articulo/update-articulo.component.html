@@ -1,10 +1,10 @@
-<div *ngIf="!articulo.nombre">
+<div *ngIf="!carga">
     <div class="progress">
         <div class="indeterminate"></div>
     </div>
 </div>
 
-<div *ngIf="articulo.id != 0 && articulo.nombre">
+<div *ngIf="carga">
     <h1>Articulo</h1>
     <form class="col s12" #updateForm="ngForm" (submit)="onSubmit(updateForm)">
 
@@ -12,23 +12,23 @@
         <div class="row">
 
             <div class="input-field col s12 m4">
-                <input type="text" class="validate" name="nombre" id="nombre" #nombre="ngModel"
-                    [(ngModel)]="articulo.nombre" required>
-                <label for="nombre">Nombre</label>
+                <input placeholder="{{articulo.nombre}}" type="text" class="validate" name="nombre" id="nombre"
+                    #nombre="ngModel" [(ngModel)]="articulo.nombre" required>
+                <label for="nombre" class="active" *ngIf="nombre.valid">Nombre</label>
                 <label for="nombre" *ngIf="!nombre.valid && nombre.touched">Nombre obligatorio</label>
             </div>
 
             <div class="input-field col s12 m4">
                 <input type="number" class="validate" name="cantidad" id="cantidad" #cantidad="ngModel"
                     [(ngModel)]="articulo.cantidad" required>
-                <label for="cantidad">Cantidad</label>
+                <label for="cantidad" class="active">Cantidad</label>
                 <label for="cantidad" *ngIf="!cantidad.valid && cantidad.touched">Cantidad Obligatoria</label>
             </div>
 
             <div class="input-field col s12 m4">
                 <input type="number" name="precio" id="precio" class="validate" #precio="ngModel"
                     [(ngModel)]="articulo.precio" required>
-                <label for="precio">Precio</label>
+                <label for="precio" class="active">Precio</label>
                 <label for="precio" *ngIf="!precio.valid && precio.valid">Precio Obligatorio</label>
             </div>
         </div>
@@ -37,22 +37,32 @@
         <!-- DESCRIPTION -->
         <div class="row">
             <div class="col s12">
-                <textarea [froalaEditor]="options" name="description" #description="ngModel" id="desc"
-                    [(ngModel)]="articulo.descripcion">
+                <textarea id="desc" [froalaEditor]="options" name="description" #description="ngModel"
+                    [(ngModel)]="articulo.descripcion" [innerHTML]="articulo.descripcion">
                 </textarea>
             </div>
         </div>
         <!-- /DESCRIPTION -->
 
         <div class="row">
-            <img *ngIf="articulo.foto" src="{{url + articulo.foto}}" alt="{{articulo.nombre}}">
-            <img *ngIf="!articulo.foto" src="https://screenshotlayer.com/images/assets/placeholder.png" alt="Not found">
+            <div class="center">
+                <img *ngIf="articulo.foto" src="{{url + articulo.foto}}" alt="{{articulo.nombre}}">
+                <img *ngIf="!articulo.foto" src="https://screenshotlayer.com/images/assets/placeholder.png"
+                    alt="Not found">
+
+                <div class="col s12 space center">
+                    <p class="alert">¿deseas cambiar esta imagen?, la imagen no puede pesar más
+                        de 5MB</p>
+                    <angular-file-uploader [config]="afuConfig" [resetUpload]=resetVar (ApiResponse)="upload($event)">
+                    </angular-file-uploader>
+                </div>
+            </div>
         </div>
 
         <div class="row">
 
             <div class="row center">
-                <input type="submit" value="Crear" class="btn-large waves-effect waves-light center"
+                <input type="submit" value="Editar" class="btn-large waves-effect waves-light center"
                     [disabled]="updateForm.invalid">
             </div>
 

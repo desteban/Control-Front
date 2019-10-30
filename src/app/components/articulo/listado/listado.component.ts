@@ -47,7 +47,6 @@ export class ListadoComponent implements OnInit {
       response => {
         if(response.status == "succes"){
           this.articulos = response.articulos
-          console.log(this.articulos)
         }
       },
       error => {

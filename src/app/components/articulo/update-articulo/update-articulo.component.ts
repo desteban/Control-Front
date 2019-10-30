@@ -5,6 +5,7 @@ import { ArticuloService } from "../../../services/ArticuloService";
 import { UserService } from "../../../services/UserService";
 import { Articulos } from "../../../models/Articulos";
 import { global } from "../../../services/global";
+import * as Material from "../../../M.js";
 
 @Component({
   selector: 'app-update-articulo',
@@ -18,6 +19,8 @@ export class UpdateArticuloComponent implements OnInit {
   public afuConfig
   public url: string
   public options;
+  public carga: boolean
+  private M;
 
   constructor(
     private _identityGuard: IdentityGuard,
@@ -29,8 +32,10 @@ export class UpdateArticuloComponent implements OnInit {
 
   ngOnInit() {
 
+    this.M = Material.getM()
     this.articulo = Articulos.articuloDefault()
     this.url = global.Apiurl + 'Articulo/foto/'
+    this.carga = false
 
     this.options = {
       placeholderText: 'Puedes agregar una descripcion del producto',
@@ -41,7 +46,9 @@ export class UpdateArticuloComponent implements OnInit {
       toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
     }
 
+
     this.getArticulo()
+    this.optionUpload()
   }
 
   private getId() {
@@ -65,18 +72,27 @@ export class UpdateArticuloComponent implements OnInit {
         this.articulo.cantidad = articuloDB.cantidad
         this.articulo.precio = articuloDB.precio
 
+        this.carga = true
+
       },
       error => {
-        this._router.navigate([`articulo/editar`])  
+        this._router.navigate([`articulo/editar`])
       }
     )
   }
 
-  onSubmit(form){
-
+  onSubmit(form) {
+    this._articuloService.updateArticulo(this.articulo, this._userService.getToken()).subscribe(
+      response => {
+        this.M.toast({ html: response.message, classes: 'rounded' })
+      },
+      error => {
+        console.error(error)
+      }
+    )
   }
 
-  private optionUpload(){
+  private optionUpload() {
     this.afuConfig = {
       multiple: false,
       formatsAllowed: ".jpg,.png",
@@ -95,6 +111,13 @@ export class UpdateArticuloComponent implements OnInit {
         attachPinBtn: 'Sube una foto'
       }
     }
+  }
+
+  upload(datos) {
+    let response = JSON.parse(datos.response)
+
+    this.M.toast({ html: `${response.message}`, classes: 'rounded' })
+
   }
 
 }
