@@ -50,7 +50,8 @@ export class AddPrestamoComponent implements OnInit {
 
       this._prestamoService.addPrestamo(this.prestamo, this._userService.getToken()).subscribe(
         response => {
-          console.log(response)
+          this.M.toast({html: response.message, classes: 'rounded'})
+          form.reset()
         },
         error => {
           console.error(error)
