@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from "../../services/UserService";
+import { UserService } from "../../services/User.service";
 import { IdentityGuard } from "../../services/identity.guard";
 import { Persona } from "../../models/Persona";
 import { global } from "../../services/global";

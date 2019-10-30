@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from "../../services/UserService";
+import { UserService } from "../../services/User.service";
 import { IdentityGuard } from "../../services/identity.guard";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import * as Material from "../../M.js"

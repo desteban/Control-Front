@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 import { IdentityGuard } from "../../../services/identity.guard";
-import { ArticuloService } from "../../../services/ArticuloService";
-import { UserService } from "../../../services/UserService";
+import { ArticuloService } from "../../../services/Articulo.service";
+import { UserService } from "../../../services/User.service";
 import { Articulos } from "../../../models/Articulos";
 import { global } from "../../../services/global";
 import * as Material from "../../../M.js";

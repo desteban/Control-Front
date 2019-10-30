@@ -1,5 +1,5 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import { UserService } from "./services/UserService";
+import { UserService } from "./services/User.service";
 import { global } from "./services/global";
 import * as Material from "./M.js"
 

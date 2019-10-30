@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Articulos } from "../../../models/Articulos";
 import * as Material from "../../../M.js"
 import { global } from "../../../services/global";
-import { UserService } from "../../../services/UserService";
-import { ArticuloService } from "../../../services/ArticuloService";
+import { UserService } from "../../../services/User.service";
+import { ArticuloService } from "../../../services/Articulo.service";
 import { Router } from "@angular/router";
 
 @Component({

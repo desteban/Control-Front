@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Persona } from "../../models/Persona";
-import { UserService } from "../../services/UserService";
+import { UserService } from "../../services/User.service";
 import * as Material from "../../M.js";
 
 @Component({

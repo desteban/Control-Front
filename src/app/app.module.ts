@@ -19,6 +19,7 @@ import { ListadoComponent } from './components/articulo/listado/listado.componen
 import { SureComponent } from './components/error/sure/sure.component';
 import { NotFoundComponent } from './components/error/not-found/not-found.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { AddPrestamoComponent } from './components/prestamo/add-prestamo/add-prestamo.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     SureComponent,
     NotFoundComponent,
     PerfilComponent,
+    AddPrestamoComponent,
   ],
   imports: [
     BrowserModule,

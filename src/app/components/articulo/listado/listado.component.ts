@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import { UserService } from "../../../services/UserService";
-import { ArticuloService } from "../../../services/ArticuloService";
+import { UserService } from "../../../services/User.service";
+import { ArticuloService } from "../../../services/Articulo.service";
 import { IdentityGuard } from "../../../services/identity.guard";
 import { Articulos } from "../../../models/Articulos";
 import { global } from "../../../services/global";

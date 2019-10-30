@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { UserService } from "./UserService";
+import { UserService } from "./User.service";
 
 @Injectable()
 export class IdentityGuard {
@@ -32,8 +32,6 @@ export class IdentityGuard {
                     if (!identity.rol) {
                         this._router.navigate(['error'])
                     }
-                }else{
-                    this._router.navigate(['error'])
                 }
             }
         }
