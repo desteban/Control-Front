@@ -12,4 +12,8 @@ export class Prestamo {
     ) {
 
     }
+
+    public static prestamoDefault(){
+        return new Prestamo(0,null,null,null,null,null,null,null,null)
+    }
 }
