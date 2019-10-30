@@ -32,11 +32,15 @@ export class UpdateArticuloComponent implements OnInit {
 
   ngOnInit() {
 
-    this.M = Material.getM()
     this.articulo = Articulos.articuloDefault()
+    this.getArticulo()
+    this._identityGuard.sure(true, 'articulo/editar', true)
+
+    //cargar complementos de estetica
+    this.optionUpload()
+    this.M = Material.getM()
     this.url = global.Apiurl + 'Articulo/foto/'
     this.carga = false
-
     this.options = {
       placeholderText: 'Puedes agregar una descripcion del producto',
       charCounterCount: true,
@@ -47,8 +51,6 @@ export class UpdateArticuloComponent implements OnInit {
     }
 
 
-    this.getArticulo()
-    this.optionUpload()
   }
 
   private getId() {

@@ -8,49 +8,51 @@ export class IdentityGuard {
     constructor(
         private _router: Router,
         private _userService: UserService
-    ){}
+    ) { }
 
     //rutas reguras
     //acces: se puede acceder a la ruta si cuenta con credenciales
-    sure(acces: boolean = true ,url: string = 'login', empleado: boolean = false){
-        
+    sure(acces: boolean = true, url: string = 'login', empleado: boolean = false) {
+
         //obtener credenciales
         let identity = this._userService.getIdentity()
 
-        if(!acces){
-            if(identity != null){
+        if (!acces) {
+            if (identity != null) {
                 this._router.navigate(['perfil'])
             }
-        }else{
+        } else {
             //validar credenciales
-            if(identity == null){
+            if (identity == null) {
                 this._router.navigate([url])
-            }else{
+            } else {
                 //validar si la ruta solo se acede por empleados
-                if(empleado){
+                if (empleado) {
                     //valar si es un empleado
-                    if(!identity.rol){
+                    if (!identity.rol) {
                         this._router.navigate(['error'])
                     }
+                }else{
+                    this._router.navigate(['error'])
                 }
             }
         }
 
     }
 
-    verifyUrl(urlSucces, urldefault:string = 'inicio'){
+    verifyUrl(urlSucces, urldefault: string = 'inicio') {
         switch (urlSucces) {
-          case 'perfil':
-              this._router.navigate(['perfil'])
-            break;
-  
+            case 'perfil':
+                this._router.navigate(['perfil'])
+                break;
+
             case 'articulos':
-              this._router.navigate(['articulos'])
-              break;
-        
-          default:
-              this._router.navigate([urldefault])
-            break;
+                this._router.navigate(['articulos'])
+                break;
+
+            default:
+                this._router.navigate([urldefault])
+                break;
         }
     }
 }
