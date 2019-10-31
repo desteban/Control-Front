@@ -30,6 +30,9 @@
           </ul>
         </li>
         <!-- /PRESTAMO -->
+        <li *ngIf="identity && identity.nombre && identity.rol">
+            <a [routerLink]="['/persona/crear']" ><i class="material-icons right">person_add</i>Agregar persona</a>
+        </li>
         <!-- /EMPLEADO -->
 
         <!-- PERFIL -->

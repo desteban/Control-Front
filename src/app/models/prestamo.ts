@@ -13,12 +13,15 @@ export class Prestamo {
         public visible: boolean,
         public created_at: any,
         public articulo: Articulos,
-        public recargo: Array<Recargo>
+        public recargo: Array<Recargo>,
+        public damage: boolean,
+        public motivo: string,
+        public valor: number
     ) {
 
     }
 
     public static prestamoDefault(){
-        return new Prestamo(0,null,null,null,null,null,null,null,null, Articulos.articuloDefault(), [])
+        return new Prestamo(0,null,null,null,null,null,null,null,null, Articulos.articuloDefault(), [], false, null,0)
     }
 }

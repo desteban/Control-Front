@@ -7,7 +7,9 @@ export class Recargo {
         public total: number,
         public motivo: string,
         public pagado: boolean
-    ) {
+    ) { }
 
+    public static recargoDefault(): Recargo{
+        return new Recargo(0,0,false,null,0,null,false)
     }
 }

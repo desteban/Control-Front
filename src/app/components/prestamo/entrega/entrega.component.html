@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="row center">
+    <div class="row center" *ngIf="prestamo.id == 0">
         <input type="submit" value="buscar" class="btn-large waves-effect waves-light center"
             [disabled]="personaform.invalid">
     </div>
@@ -26,6 +26,7 @@
     <p>No tiene prestamos pendientes</p>
 </div>
 
+<!-- DATOS DE LA PERSONA -->
 <div class="row" *ngIf="persona.nombre && persona.apellido">
     <div class="col s12 m6">
         <label for="nombre">Nombre</label>
@@ -36,12 +37,14 @@
         <input type="text" name="apellido" [(ngModel)]="persona.apellido" id="apellido" disabled>
     </div>
 </div>
+<!-- /DATOS DE LA PERSONA -->
 
-<div class="row" *ngIf="prestamos && !busqueda" id="prestamos">
+<!-- PRESTAMOS -->
+<div class="row" *ngIf="prestamos && !busqueda && prestamo.id == 0" id="prestamos">
     <div *ngFor="let prestamo of prestamos">
 
         <!-- CARD -->
-        <div class="col s12 m6">
+        <div *ngIf="prestamo.visible" class="col s12 m6">
             <div class="card">
                 <!-- IMAGEN -->
                 <div class="card-image">
@@ -66,7 +69,7 @@
 
                 <!-- ACTION -->
                 <div class="card-action">
-                    <a>Entregar</a>
+                    <a (click)="entregaPrestamo(prestamo.id)" class="click">Entregar</a>
                 </div>
                 <!-- /ACTION -->
             </div>
@@ -75,3 +78,68 @@
 
     </div>
 </div>
+<!-- /PRESTAMOS -->
+
+<!-- ENTREGA -->
+<div class="col s12" *ngIf="prestamo.id != 0">
+    <hr>
+    <a (click)="back()" class="click"><i class="material-icons">arrow_back</i></a>
+
+    <form #entregaForm="ngForm" (submit)="onSubmit(entregaForm)">
+
+        <!-- RECARGOS -->
+        <div class="row">
+            <h4>{{prestamo.articulo.nombre}}</h4>
+        </div>
+        <div class="row" *ngIf="prestamo.recargo.length > 0">
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <th>Motivo de recargo</th>
+                        <th>Costo</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let rec of prestamo.recargo">
+                        <td [innerHTML]="rec.motivo"></td>
+                        <td [innerHTML]="rec.total"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="col s12">
+                    <p class="money">Total a pagar: {{ total | currency: 'USD' | lowercase }}</p>
+            </div>
+        </div>
+        <!-- /RECARGOS -->
+
+        <!-- DAMAGE -->
+        <div class="row">
+            <div class="col s6 center">
+                <p>
+                    <label>
+                        <input name="group1" type="radio" checked (click)="damage(false)" />
+                        <span>Buen estado</span>
+                    </label>
+                </p>
+            </div>
+
+            <div class="col s6 center">
+                <p>
+                    <label>
+                        <input name="group1" type="radio" (click)="damage(true)" />
+                        <span>Mal estado</span>
+                    </label>
+                </p>
+            </div>
+        </div>
+        <!-- /DAMAGE -->
+
+        <div class="row center">
+            <input type="submit" value="Entregar" class="btn-large waves-effect waves-light center"
+                [disabled]="entregaForm.invalid">
+        </div>
+    </form>
+</div>
+<!-- /ENTREGA -->
