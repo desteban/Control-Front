@@ -97,7 +97,6 @@ export class EntregaComponent implements OnInit {
       response => {
         this.prestamos = response.prestamos
         this.busqueda = false
-        console.log(this.prestamos)
         this.tooltip()
       },
       error => {
