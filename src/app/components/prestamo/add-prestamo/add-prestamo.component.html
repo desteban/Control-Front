@@ -36,7 +36,7 @@
         <!-- ESCOJER ARTICULO -->
         <div class="input-field col s12 m6">
             <select #idArticulo [(ngModel)]="prestamo.id_articulo" name="idArticulo" required>
-                <option value="" disabled selected>Escoje un articulo</option>
+                <option value="" disabled selected>Escoge un artículo</option>
                 <option *ngFor="let articulo of articulos" value="{{articulo.id}}" [innerHTML]="articulo.nombre">
                 </option>
             </select>

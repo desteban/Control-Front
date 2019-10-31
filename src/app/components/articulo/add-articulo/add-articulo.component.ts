@@ -40,7 +40,7 @@ export class AddArticuloComponent implements OnInit {
   ngOnInit() {
 
     this.options = {
-      placeholderText: 'Puedes agregar una descripcion del producto',
+      placeholderText: 'Puedes agregar una descripción del producto',
       charCounterCount: true,
       toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
       toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
