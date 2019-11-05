@@ -23,6 +23,7 @@ export class EntregaComponent implements OnInit {
   private M
   public url: string
   public total: number
+  public status: boolean
 
   constructor(
     private _identityGuard: IdentityGuard,
@@ -41,6 +42,7 @@ export class EntregaComponent implements OnInit {
     this.persona.id = null
     this.M = Material.getM()
     this.total = 0
+    this.status = true
   }
 
   onSubmit(form) {
@@ -133,21 +135,27 @@ export class EntregaComponent implements OnInit {
 
   back() {
     this.prestamo = Prestamo.prestamoDefault()
+    this.total = 0
   }
 
-  damage() {
-    let danio = Recargo.recargoDefault()
-
-    danio.id_prestamo = this.prestamo.id
-    danio.damage = true
-    danio.motivo = 'Articulo dañado'
-    danio.total = this.prestamo.articulo.precio
-    this.prestamo.damage = true
-    this.prestamo.motivo = 'Articulo dañado'
-    this.prestamo.valor = this.costo()
-
-    this.prestamo.recargo.push(danio)
-    this.total = this.costo()
+  damage(estado = true) {
+    if(estado){
+      this.prestamo.recargo = []
+      console.log(this.prestamo.recargo)
+    }else{
+      let danio = Recargo.recargoDefault()
+  
+      danio.id_prestamo = this.prestamo.id
+      danio.damage = true
+      danio.motivo = 'Articulo dañado'
+      danio.total = this.prestamo.articulo.precio
+      this.prestamo.damage = true
+      this.prestamo.motivo = 'Articulo dañado'
+      this.prestamo.valor = this.costo()
+  
+      this.prestamo.recargo.push(danio)
+      this.total = this.costo()
+    }
   }
 
   costo() {

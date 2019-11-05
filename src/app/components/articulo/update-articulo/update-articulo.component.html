@@ -53,7 +53,7 @@
                 <div class="col s12 space center">
                     <p class="alert">¿deseas cambiar esta imagen?, la imagen no puede pesar más
                         de 5MB</p>
-                    <angular-file-uploader [config]="afuConfig" [resetUpload]=resetVar (ApiResponse)="upload($event)">
+                    <angular-file-uploader [config]="afuConfig" (ApiResponse)="upload($event)">
                     </angular-file-uploader>
                 </div>
             </div>

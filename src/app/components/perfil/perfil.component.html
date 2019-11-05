@@ -25,7 +25,7 @@
                     alt="Foto de perfil">
             </div>
             <div class="col s12 space center">
-                <angular-file-uploader [config]="afuConfig" [resetUpload]=resetVar (ApiResponse)="upload($event)">
+                <angular-file-uploader [config]="afuConfig" (ApiResponse)="upload($event)">
                 </angular-file-uploader>
             </div>
         </div>

@@ -119,7 +119,10 @@
             <div class="col s6 center">
                 <p>
                     <label>
-                        <input name="group1" type="radio" checked (click)="damage(false)" />
+                        <input name="group1"
+                         type="radio"
+                          checked (click)="damage()" 
+                          value="0"/>
                         <span>Buen estado</span>
                     </label>
                 </p>
@@ -128,7 +131,10 @@
             <div class="col s6 center">
                 <p>
                     <label>
-                        <input name="group1" type="radio" (click)="damage(true)" />
+                        <input name="group1"
+                         type="radio"
+                        (click)="damage(false)" 
+                        value="1"/>
                         <span>Mal estado</span>
                     </label>
                 </p>
