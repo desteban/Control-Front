@@ -5,6 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Desarrollo
 
 1.  Installar todas las dependencias 
+    ``` npm install -g @angular/cli@8.3.9 ```
 
     ``` npm install ```
 
