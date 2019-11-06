@@ -1,9 +1,18 @@
+.logo_nav{
+padding: 5px;
+}
+
 .item{
     color: black;
 }
 
 nav{
     margin-bottom: 20px;
+    height: 80px;
+}
+
+nav ul a{
+  margin: 10px 0px;
 }
 
 .nav li ul {

@@ -1,9 +1,9 @@
 <header>
   <nav class="blue darken-3">
     <div class="nav-wrapper container">
-      <a [routerLink]="['/']" class="brand-logo">App</a>
+      <a [routerLink]="['/']" class="brand-logo"><img src="https://www.ucundinamarca.edu.co/images/iconos/logo-nuevo-70.png" alt="Logo" class="logo_nav"></a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      
+
       <!-- MENU -->
       <ul class="right hide-on-med-and-down nav">
         <li *ngIf="identity == null"><a [routerLink]="['/']">Inicio</a></li>
@@ -40,7 +40,7 @@
             <i class="material-icons right" *ngIf="!identity.foto">account_circle</i>
             <img src="{{url + identity.foto}}" class="avatar circle responsive-img avatar-big" *ngIf="identity.foto">
             {{identity.nombre + ' ' + identity.apellido}}</a>
-          
+
             <ul id="Perfil">
                 <li><a [routerLink]="['/perfil']"><i class="material-icons right">settings</i>Perfil</a></li>
                 <li><a [routerLink]="['/logout/1']"><i class="material-icons right">exit_to_app</i>Salir</a></li>
@@ -51,7 +51,7 @@
         </ul>
         <!-- /MENU -->
       </div>
-      
+
     </nav>
 
   <!-- MENU MOVIL -->
