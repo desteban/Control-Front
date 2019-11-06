@@ -1,34 +1,111 @@
+<!--
+<div class="container">
 
-  <div class="container">
 
+  <div id="log_in" class="row">
+    <div id="logo" class="col s10 offset-s1 m6 offset-m3 l5 offset-l3">
+      <img class="responsive-img" src="img/logo_login_cundinamarca.png">
+    </div>
+    <div id="log_in_field" class="z-depth-4 col s10 offset-s1 m6 offset-m3 l5 offset-l3">
+      <form class=" Signup" #loginForm="ngForm" (submit)="onSubmit(loginForm)">
 
-    <div id="log_in" class="row">
-      <div id="logo" class="col s10 offset-s1 m6 offset-m3 l5 offset-l3">
-        <img class="responsive-img" src="img/logo_login_cundinamarca.png">
-      </div>
-      <div id="log_in_field" class="z-depth-4 col s10 offset-s1 m6 offset-m3 l5 offset-l3">
-        <form class=" Signup" #loginForm="ngForm" (submit)="onSubmit(loginForm)">
-          <div id="cc_field_user" class="row ">
-            <div class="input-field col s12 m10 offset-m1 ">
-              <i class="material-icons prefix grey-text text-lighten-5">account_circle</i>
-              <input type="number" class="validate grey-text text-lighten-5" placeholder="C.C." id="user" name="C.C." #cc="ngModel" [(ngModel)]="persona.cc" required autocomplete="off">
+        <div class="input-field col s12 m10 offset-m1">
+          <i class="material-icons prefix grey-text text-lighten-5">account_circle</i>
+          <input type="number" name="cc" id="username" class="validate">
+          <label for="cc">C.C.</label>
+        </div>
 
-              <!--           validacion de campo erronea             -->
+        <div class="input-field col s12 m10 offset-m1"></div>
+        <div id="cc_field_user" class="row ">
 
-              <label *ngIf="!cc.valid && cc.touched" for="C.C.">C.C. obligatorio</label>
-            </div>
+          <div class="input-field col s12 m10 offset-m1 ">
+            <i class="material-icons prefix grey-text text-lighten-5">account_circle</i>
+            <input type="number" class="validate grey-text text-lighten-5" id="user" name="C.C."
+              #cc="ngModel" [(ngModel)]="persona.cc" required autocomplete="off">
+            <label *ngIf="!cc.valid && cc.touched" for="C.C.">C.C. obligatorio</label>
+            <label for="C.C.">C.C.</label>
           </div>
-          <div id="pasword_field_user" class="row">
-            <div class="input-field col s12 m10 offset-m1">
-              <i class="material-icons prefix grey-text text-lighten-5">lock</i>
-              <input type="password" class="validate grey-text text-lighten-5" placeholder="Contraseña" id="password" name="password" #password [(ngModel)]="persona.password" required>
-            </div>
+        </div>
+        <div id="pasword_field_user" class="row">
+          <div class="input-field col s12 m10 offset-m1">
+            <i class="material-icons prefix grey-text text-lighten-5">lock</i>
+            <input type="password" class="validate grey-text text-lighten-5" placeholder="Contraseña" id="password"
+              name="password" #password [(ngModel)]="persona.password" required>
           </div>
+        </div>
 
-          <div class="row center">
-            <input type="submit" value="ACCEDER" class="btn-large waves-effect waves-light center light-blue lighten-5  " [disabled]="loginForm.invalid">
-          </div>
-        </form>
-      </div>
+        <div class="row center">
+          <input type="submit" value="ACCEDER" class="btn-large waves-effect waves-light center light-blue lighten-5  "
+            [disabled]="loginForm.invalid">
+        </div>
+      </form>
     </div>
   </div>
+</div>
+-->
+
+<div class="row" id="log_in">
+
+  <div id="logo" class="col s12">
+    <img class="responsive-img" src="img/logo_login_cundinamarca.png">
+  </div>
+
+  <form class="col s12 Signin" #loginForm="ngForm" (submit)="onSubmit(loginForm)" id="log_in_field">
+    <!-- CC -->
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+        <input type="number" class="validate grey-text text-lighten-5" id="user" name="C.C." #cc="ngModel" [(ngModel)]="persona.cc" required
+          autocomplete="off">
+        <label for="user">C.C.</label>
+      </div>
+    </div>
+    <!-- /CC -->
+
+    <!-- PASSWORD-->
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">lock</i>
+        <input type="password" class="validate grey-text text-lighten-5" id="password" name="password" #password [(ngModel)]="persona.password"
+          required>
+        <label for="password">Contraseña</label>
+      </div>
+    </div>
+    <!-- /PASSWORD -->
+
+    <!-- SEND -->
+    <div class="row center">
+      <input type="submit" value="Sign-in" class="btn-large waves-effect waves-light center"
+        [disabled]="loginForm.invalid">
+    </div>
+    <!-- /SEND -->
+  </form>
+</div>
+
+<!--
+<div class="row">
+    <form class="col s12 m7 offset-m3 Signup" #loginForm="ngForm" (submit)="onSubmit(loginForm)" >
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">account_circle</i>
+                <input type="number" class="validate" id="user" name="C.C."
+                    #cc="ngModel" [(ngModel)]="persona.cc" required autocomplete="off">
+                <label for="user">C.C.</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">lock</i>
+                <input type="password" class="validate" id="password" name="password"
+                    #password [(ngModel)]="persona.password" required>
+                <label for="password">Contraseña</label>
+            </div>
+        </div>
+        <div class="row center">
+            <input type="submit" value="Sign-in"  class="btn-large waves-effect waves-light center"
+                [disabled]="loginForm.invalid">
+        </div>
+    </form>
+</div>
+
+-->

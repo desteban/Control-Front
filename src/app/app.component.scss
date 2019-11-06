@@ -12,7 +12,8 @@ nav{
 }
 
 nav ul a{
-  margin: 10px 0px;
+  padding-top: 10px;
+  height: 80px;
 }
 
 .nav li ul {
@@ -41,9 +42,14 @@ img.avatar{
 
 img.avatar-big{
     position: relative;
-    top: 10px;
+    top: 5px;
 }
 //------------  MENU MOVIL --------------
+nav .sidenav-trigger i{
+ height: 80px;
+ padding: 10px 2px;
+}
+
 #mobile-demo li a{
     color: black;
 }
