@@ -1,73 +1,70 @@
-<div class="col s12">
+<div class="row">
+  <div class="col s12">
     <form class="col s12 m7 offset-m3" #personaForm="ngForm" (submit)="onSubmint(personaForm)">
-        
-        <div class="row">
-            <div class="input-field col s12 m6">
-                 <input type="text" class="validate" id="nombre" name="nombre" 
-                 #nombre ="ngModel" [(ngModel)]="persona.nombre" required >
-                 <label for="nombre">Nombre</label>
-                <label *ngIf="!nombre.valid && nombre.touched" for="nombre">Nombre obligatorio</label>
-            </div>
 
-            <div class="input-field col s12 m6">
-                <input type="text" class="validate" id="apellido" name="apellido" 
-                #apellido="ngModel" [(ngModel)]="persona.apellido" required >
-                <label for="apellido">Apellido</label>
-                <label *ngIf="!apellido.valid && apellido.touched" for="C.C.">Apellido obligatorio</label>
-            </div>
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <input type="text" class="validate" id="nombre" name="nombre" #nombre="ngModel" [(ngModel)]="persona.nombre" required>
+          <label for="nombre">Nombre</label>
+          <label *ngIf="!nombre.valid && nombre.touched" for="nombre">Nombre obligatorio</label>
         </div>
 
-        <div class="row">
-            <div class="input-field col s12 m6">
-                <i class="material-icons prefix">face</i>
-                <input type="number" class="validate" id="CC" name="CC" 
-                #cc="ngModel" [(ngModel)]="persona.cc" required autocomplete="off">
-                <label for="CC">C.C.</label>
-                <label *ngIf="!cc.valid && cc.touched" for="CC">C.C. obligatorio</label>
-            </div>
-
-            <div class="col s12 m6">
-                <!-- EMPLEADO | ESTUDIANTE -->
-                <div class="row">
-                    <div class="col s6">
-                        <p>
-                            <label>
-                                <input onclick="empleado()" type="radio" name="g1" (focus)="getRol(0)" checked id="empleadoopt" >
-                                <span>Empleado</span>
-                            </label>
-                        </p>
-                    </div>
-                    <div class="col s6">
-                        <p>
-                            <label>
-                                <input onclick="estudiante()" type="radio" name="g1" (focus)="getRol(1)" id="estudianteopt">
-                                <span>Estudiante</span>
-                            </label>
-                        </p>
-                    </div>
-                </div>
-                <!-- /EMPLEADO | ESTUDIANTE -->
-
-
-                
-            </div>
+        <div class="input-field col s12 m6">
+          <input type="text" class="validate" id="apellido" name="apellido" #apellido="ngModel" [(ngModel)]="persona.apellido" required>
+          <label for="apellido">Apellido</label>
+          <label *ngIf="!apellido.valid && apellido.touched" for="C.C.">Apellido obligatorio</label>
         </div>
-        
-        <!-- AUTO COMPLETE -->
-        <div class="row">
-            <div class="input-field col s12" >
-                <input type="text" id="autocomplete" name="rol" class="autocomplete" 
-                #rol="ngModel" [(ngModel)]="persona.carrera" autocomplete="off" required (blur)="getSeleccion()">
-                <label for="autocomplete" *ngIf="role == 'Empleado'">Rol de Empleado</label>
-                <label for="autocomplete" *ngIf="role == 'Estudiante'">Carrera</label>
-            </div>
-        </div>
-        <!-- /AUTO COMPLETE -->
+      </div>
 
-        <div class="row center">
-            <input type="submit" value="Sign-in"  class="btn-large waves-effect waves-light center" 
-            [disabled]="personaForm.invalid">
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">face</i>
+          <input type="number" class="validate" id="CC" name="CC" #cc="ngModel" [(ngModel)]="persona.cc" required autocomplete="off">
+          <label for="CC">C.C.</label>
+          <label *ngIf="!cc.valid && cc.touched" for="CC">C.C. obligatorio</label>
         </div>
+
+        <div class="col s12 m6">
+          <!-- EMPLEADO | ESTUDIANTE -->
+          <div class="row">
+            <div class="col s6">
+              <p>
+                <label>
+                  <input onclick="empleado()" type="radio" name="g1" (focus)="getRol(0)" checked id="empleadoopt">
+                  <span>Empleado</span>
+                </label>
+              </p>
+            </div>
+            <div class="col s6">
+              <p>
+                <label>
+                  <input onclick="estudiante()" type="radio" name="g1" (focus)="getRol(1)" id="estudianteopt">
+                  <span>Estudiante</span>
+                </label>
+              </p>
+            </div>
+          </div>
+          <!-- /EMPLEADO | ESTUDIANTE -->
+
+
+
+        </div>
+      </div>
+
+      <!-- AUTO COMPLETE -->
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="text" id="autocomplete" name="rol" class="autocomplete" #rol="ngModel" [(ngModel)]="persona.carrera" autocomplete="off" required (blur)="getSeleccion()">
+          <label for="autocomplete" *ngIf="role == 'Empleado'">Rol de Empleado</label>
+          <label for="autocomplete" *ngIf="role == 'Estudiante'">Carrera</label>
+        </div>
+      </div>
+      <!-- /AUTO COMPLETE -->
+
+      <div class="row center">
+        <input type="submit" value="Sing-in" class="btn-large waves-effect waves-dark center light-blue lighten-5" [disabled]="personaForm.invalid">
+      </div>
 
     </form>
+  </div>
 </div>
