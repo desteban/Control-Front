@@ -44,44 +44,43 @@
 </div>
 -->
 
-<div class="row" id="log_in">
+<div class="row">
+  <div class="row col s12 m7 offset-m3 l5 offset-l4" id="log_in">
 
-  <div id="logo" class="col s12">
-    <img class="responsive-img" src="img/logo_login_cundinamarca.png">
+    <div id="logo" class="col s12">
+      <img class="responsive-img" src="https://virtual.ucundinamarca.edu.co/pluginfile.php/1/theme_unicundi/logologin/1567698126/logo_login_cundinamarca_SUBIR.png">
+    </div>
+
+    <form class="col s12 Signin" #loginForm="ngForm" (submit)="onSubmit(loginForm)" id="log_in_field">
+      <!-- CC -->
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix grey-text text-lighten-5">account_circle</i>
+          <input type="number" class="validate grey-text text-lighten-5" id="user" name="C.C." #cc="ngModel" [(ngModel)]="persona.cc" required autocomplete="off">
+          <label for="user prefix grey-text text-lighten-5">C.C.</label>
+        </div>
+      </div>
+      <!-- /CC -->
+
+      <!-- PASSWORD-->
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix prefix grey-text text-lighten-5">lock</i>
+          <input type="password" class="validate grey-text text-lighten-5" id="password" name="password" #password [(ngModel)]="persona.password" required>
+          <label for="password prefix grey-text text-lighten-5">Contraseña</label>
+        </div>
+      </div>
+      <!-- /PASSWORD -->
+
+      <!-- SEND -->
+      <div class="row center">
+        <input type="submit" value="Sign-in" class="btn-large waves-effect waves-light center light-blue lighten-5" [disabled]="loginForm.invalid">
+      </div>
+      <!-- /SEND -->
+    </form>
   </div>
 
-  <form class="col s12 Signin" #loginForm="ngForm" (submit)="onSubmit(loginForm)" id="log_in_field">
-    <!-- CC -->
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix">account_circle</i>
-        <input type="number" class="validate grey-text text-lighten-5" id="user" name="C.C." #cc="ngModel" [(ngModel)]="persona.cc" required
-          autocomplete="off">
-        <label for="user">C.C.</label>
-      </div>
-    </div>
-    <!-- /CC -->
-
-    <!-- PASSWORD-->
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix">lock</i>
-        <input type="password" class="validate grey-text text-lighten-5" id="password" name="password" #password [(ngModel)]="persona.password"
-          required>
-        <label for="password">Contraseña</label>
-      </div>
-    </div>
-    <!-- /PASSWORD -->
-
-    <!-- SEND -->
-    <div class="row center">
-      <input type="submit" value="Sign-in" class="btn-large waves-effect waves-light center"
-        [disabled]="loginForm.invalid">
-    </div>
-    <!-- /SEND -->
-  </form>
 </div>
-
 <!--
 <div class="row">
     <form class="col s12 m7 offset-m3 Signup" #loginForm="ngForm" (submit)="onSubmit(loginForm)" >
