@@ -48,7 +48,8 @@
   <div class="row col s12 m7 offset-m3 l5 offset-l4" id="log_in">
 
     <div id="logo" class="col s12">
-      <img class="responsive-img" src="https://virtual.ucundinamarca.edu.co/pluginfile.php/1/theme_unicundi/logologin/1567698126/logo_login_cundinamarca_SUBIR.png">
+      <!--        <img class="responsive-img" src="https://virtual.ucundinamarca.edu.co/pluginfile.php/1/theme_unicundi/logologin/1567698126/logo_login_cundinamarca_SUBIR.png">       -->
+      <span class="white-text">ACCEDER</span>
     </div>
 
     <form class="col s12 Signin" #loginForm="ngForm" (submit)="onSubmit(loginForm)" id="log_in_field">
@@ -57,7 +58,7 @@
         <div class="input-field col s12">
           <i class="material-icons prefix grey-text text-lighten-5">account_circle</i>
           <input type="number" class="validate grey-text text-lighten-5" id="user" name="C.C." #cc="ngModel" [(ngModel)]="persona.cc" required autocomplete="off">
-          <label for="user prefix grey-text text-lighten-5">C.C.</label>
+          <label for="user prefix" class="white-text">C.C.</label>
         </div>
       </div>
       <!-- /CC -->
@@ -67,7 +68,7 @@
         <div class="input-field col s12">
           <i class="material-icons prefix prefix grey-text text-lighten-5">lock</i>
           <input type="password" class="validate grey-text text-lighten-5" id="password" name="password" #password [(ngModel)]="persona.password" required>
-          <label for="password prefix grey-text text-lighten-5">Contraseña</label>
+          <label for="password prefix " class="white-text">Contraseña</label>
         </div>
       </div>
       <!-- /PASSWORD -->
