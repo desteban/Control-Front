@@ -44,6 +44,9 @@ export class AddPersonaComponent implements OnInit {
         this.M.toast({ html: 'Persona creada exitosamente', classes: 'rounded toatPers' })
       },
       error => {
+        console.log(this.persona)
+        console.error(error)
+
         if (error.error.error.cc) {
           this.M.toast({ html: `<span>Esta cedula ya fue registrada</span>`, classes: 'rounded toatPers' })
         }
