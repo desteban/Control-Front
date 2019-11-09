@@ -30,6 +30,7 @@
                 <!-- ACCIONES -->
                 <div class="card-action">
                     <a (click)="updateArticulo(articulo.id)" class="click">Editar</a>
+                    <a class="click" (click)="historial()" href="{{urlHistorial + articulo.id + '/pdf'}}" target="_blank">Descargar Historial</a>
                 </div>
                 <!-- /ACCIONES -->
             </div>

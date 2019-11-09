@@ -21,8 +21,8 @@
             <div class="input-field col s12 m4">
                 <input type="number" class="validate" name="cantidad" id="cantidad" #cantidad="ngModel"
                     [(ngModel)]="articulo.cantidad" required>
-                <label for="cantidad" class="active">Cantidad</label>
-                <label for="cantidad" *ngIf="!cantidad.valid && cantidad.touched">Cantidad Obligatoria</label>
+                <label for="cantidad" class="active">Cantidad total</label>
+                <label for="cantidad" *ngIf="!cantidad.valid && cantidad.touched">Cantidad total Obligatoria</label>
             </div>
 
             <div class="input-field col s12 m4">

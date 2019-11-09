@@ -23,6 +23,7 @@ export class ListadoComponent implements OnInit {
   private token;
   public articulos: Array<Articulos>
   public url: string
+  public urlHistorial: string
 
   constructor(
     private _userService: UserService,
@@ -36,6 +37,7 @@ export class ListadoComponent implements OnInit {
   ngOnInit() {
 
     this.url = global.ImageArticulo
+    this.urlHistorial = global.Apiurl
     this._identityGuard.sure(true, 'login/articulos', true)
 
     this.token = this._userService.getToken()
@@ -53,6 +55,10 @@ export class ListadoComponent implements OnInit {
         console.error(error)
       }
     )
+  }
+
+  historial(){
+    this.M.toast({ html: 'Generando reporte', classes: 'rounded' })
   }
 
   updateArticulo(id) {

@@ -58,4 +58,11 @@ export class ArticuloService {
 
         return this._http.put(this.url + 'Articulo/' + articulo.id, params, { headers: headers })
     }
+
+    getHistorial(id){
+
+        let header = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+
+        return this._http.get(this.url + id + '/pdf')
+    }
 }

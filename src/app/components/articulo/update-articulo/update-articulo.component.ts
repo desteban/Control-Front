@@ -19,6 +19,7 @@ export class UpdateArticuloComponent implements OnInit {
   public afuConfig
   public url: string
   public options;
+  public optionsMotivo;
   public carga: boolean
   private M;
 
@@ -49,7 +50,6 @@ export class UpdateArticuloComponent implements OnInit {
       toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
       toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
     }
-
 
   }
 
