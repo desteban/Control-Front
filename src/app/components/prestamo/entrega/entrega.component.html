@@ -89,7 +89,7 @@
 
         <!-- RECARGOS -->
         <div class="row">
-            <h4>{{prestamo.articulo.nombre}}</h4>
+            <h4>{{prestamo.articulo.nombre}} x {{prestamo.cantidad}}</h4>
         </div>
         <div class="row" *ngIf="prestamo.recargo.length > 0">
             <table class="responsive-table">
@@ -111,6 +111,18 @@
             <div class="col s12">
                     <p class="money">Total a pagar: {{ total | currency: 'USD' | lowercase }}</p>
             </div>
+
+            <div class="col s10 input-field">
+                <input type="number" name="cantidad" id="codigo" class="validate" #cantidad [(ngModel)]="cantidadDamage" required
+                    autocomplete="off">
+                <label for="cantidad" class="active">Cantidad dañada</label>
+            </div>
+
+            <div class="col s2">
+                <a class="waves-effect waves-light btn" (click)="damage(false)">Validar Precio</a>
+            </div>
+
+            <div></div>
         </div>
         <!-- /RECARGOS -->
 

@@ -24,6 +24,7 @@ export class EntregaComponent implements OnInit {
   public url: string
   public total: number
   public status: boolean
+  public cantidadDamage: number = 1
 
   constructor(
     private _identityGuard: IdentityGuard,
@@ -48,6 +49,7 @@ export class EntregaComponent implements OnInit {
   onSubmit(form) {
     this.total = this.costo()
     this.prestamo.valor = this.total
+    this.prestamo.cantidad = this.cantidadDamage
     console.log(this.prestamo)
 
     this._prestamoService.update(this.prestamo, this._userService.getToken()).subscribe(
@@ -139,22 +141,30 @@ export class EntregaComponent implements OnInit {
   }
 
   damage(estado = true) {
-    if(estado){
+    if (estado) {
       this.prestamo.recargo = []
       console.log(this.prestamo.recargo)
-    }else{
+    } else {
       let danio = Recargo.recargoDefault()
-  
+
+      //eliminar recargos para sumar la cantidad dañada
+      for (let i = 0; i < this.prestamo.recargo.length; i++) {
+        if (this.prestamo.recargo[i].motivo == 'Articulo dañado') {
+          this.prestamo.recargo.splice(i, 1);
+        }
+      }
+
       danio.id_prestamo = this.prestamo.id
       danio.damage = true
       danio.motivo = 'Articulo dañado'
-      danio.total = this.prestamo.articulo.precio
+      danio.total = this.prestamo.articulo.precio * this.cantidadDamage
+      danio.cantidad = this.cantidadDamage;
       this.prestamo.damage = true
       this.prestamo.motivo = 'Articulo dañado'
-      this.prestamo.valor = this.costo()
-  
+      this.prestamo.valor = this.costo() * this.cantidadDamage
+
       this.prestamo.recargo.push(danio)
-      this.total = this.costo()
+      this.total = this.costo() 
     }
   }
 
