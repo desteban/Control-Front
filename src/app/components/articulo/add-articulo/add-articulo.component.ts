@@ -29,7 +29,7 @@ export class AddArticuloComponent implements OnInit {
   constructor(
     private _userService: UserService,
     private _articuloService: ArticuloService,
-    private _router:Router
+    private _router: Router
   ) {
     this.articulo = Articulos.articuloDefault()
     this.M = Material.getM()
@@ -42,10 +42,10 @@ export class AddArticuloComponent implements OnInit {
     this.options = {
       placeholderText: 'Puedes agregar una descripción del producto',
       charCounterCount: true,
-      toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
-      toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
-      toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
-      toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat', 'alert'],
+      toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat', 'formatOLSimple', 'formatUL'],
+      toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat', 'formatOLSimple', 'formatUL'],
+      toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat', 'formatOLSimple', 'formatUL'],
+      toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat', 'formatOLSimple', 'formatUL'],
     }
   }
 
@@ -53,12 +53,12 @@ export class AddArticuloComponent implements OnInit {
 
     this._articuloService.createArticulo(this.articulo, this.token).subscribe(
       response => {
-
         this.articulo.id = response.articulo.id
         this.optionUpload()
         form.reset()
       },
       error => {
+        console.error(error)
         this.M.toast({ html: `<span>${error.error.message}</span>`, classes: 'rounded toatPers' })
       }
     )
@@ -76,12 +76,12 @@ export class AddArticuloComponent implements OnInit {
 
     this.M.toast({ html: `<span>${response.message}</span>`, classes: 'rounded toatPers' })
 
-    if(response.code == 200){
+    if (response.code == 200) {
       this.clear()
     }
   }
 
-  private optionUpload(){
+  private optionUpload() {
     this.afuConfig = {
       multiple: false,
       formatsAllowed: ".jpg,.png",
@@ -107,7 +107,7 @@ export class AddArticuloComponent implements OnInit {
     })
   }
 
-  clear(){
+  clear() {
     this.articulo = Articulos.articuloDefault()
   }
 }

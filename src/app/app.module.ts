@@ -22,6 +22,11 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { AddPrestamoComponent } from './components/prestamo/add-prestamo/add-prestamo.component';
 import { EntregaComponent } from './components/prestamo/entrega/entrega.component';
 
+//https://github.com/froala/angular-froala-wysiwyg/issues/305
+import 'froala-editor/js/plugins/char_counter.min.js';
+import 'froala-editor/js/plugins/lists.min.js';
+import 'froala-editor/js/plugins/paragraph_format.min.js';
+
 @NgModule({
   declarations: [
     AppComponent,

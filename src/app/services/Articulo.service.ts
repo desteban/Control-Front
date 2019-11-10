@@ -21,12 +21,7 @@ export class ArticuloService {
         this.token = token
         let json = JSON.stringify(articulo)
         let params = `json=${json}`
-
-        /*let header = new HttpHeaders({
-            'Auth': this.token,
-            'Content-Type': 'application/x-www-form-urlencoded'
-        })*/
-
+            
         let header = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
             .set('Auth', this.token);
 
