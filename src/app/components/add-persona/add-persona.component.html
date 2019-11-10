@@ -4,13 +4,15 @@
 
       <div class="row">
         <div class="input-field col s12 m6">
-          <input type="text" class="validate" id="nombre" name="nombre" #nombre="ngModel" [(ngModel)]="persona.nombre" required>
+          <input type="text" class="validate" id="nombre" name="nombre" #nombre="ngModel" [(ngModel)]="persona.nombre"
+            required autocomplete="off">
           <label for="nombre">Nombre</label>
           <label *ngIf="!nombre.valid && nombre.touched" for="nombre">Nombre obligatorio</label>
         </div>
 
         <div class="input-field col s12 m6">
-          <input type="text" class="validate" id="apellido" name="apellido" #apellido="ngModel" [(ngModel)]="persona.apellido" required>
+          <input type="text" class="validate" id="apellido" name="apellido" #apellido="ngModel"
+            [(ngModel)]="persona.apellido" required autocomplete="off">
           <label for="apellido">Apellido</label>
           <label *ngIf="!apellido.valid && apellido.touched" for="C.C.">Apellido obligatorio</label>
         </div>
@@ -19,7 +21,8 @@
       <div class="row">
         <div class="input-field col s12 m6">
           <i class="material-icons prefix">face</i>
-          <input type="number" class="validate" id="CC" name="CC" #cc="ngModel" [(ngModel)]="persona.cc" required autocomplete="off">
+          <input type="number" class="validate" id="CC" name="CC" #cc="ngModel" [(ngModel)]="persona.cc" required
+            autocomplete="off">
           <label for="CC">C.C.</label>
           <label *ngIf="!cc.valid && cc.touched" for="CC">C.C. obligatorio</label>
         </div>
@@ -54,7 +57,8 @@
       <!-- AUTO COMPLETE -->
       <div class="row">
         <div class="input-field col s12">
-          <input type="text" id="autocomplete" name="rol" class="autocomplete" #rol="ngModel" [(ngModel)]="persona.carrera" autocomplete="off" required (blur)="getSeleccion()">
+          <input type="text" id="autocomplete" name="rol" class="autocomplete" #rol="ngModel"
+            [(ngModel)]="persona.carrera" autocomplete="off" required (blur)="getSeleccion()">
           <label for="autocomplete" *ngIf="role == 'Empleado'">Rol de Empleado</label>
           <label for="autocomplete" *ngIf="role == 'Estudiante'">Carrera</label>
         </div>
@@ -62,7 +66,8 @@
       <!-- /AUTO COMPLETE -->
 
       <div class="row center">
-        <input type="submit" value="Crear" class="btn-large waves-effect waves-dark center light-blue lighten-5" [disabled]="personaForm.invalid">
+        <input type="submit" value="Crear" class="btn-large waves-effect waves-dark center light-blue lighten-5"
+          [disabled]="personaForm.invalid">
       </div>
 
     </form>

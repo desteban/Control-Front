@@ -112,7 +112,7 @@
                     <p class="money">Total a pagar: {{ total | currency: 'USD' | lowercase }}</p>
             </div>
 
-            <div class="col s10 input-field">
+            <div class="col s10 input-field" *ngIf="damageStatus">
                 <input type="number" name="cantidad" id="codigo" class="validate" #cantidad [(ngModel)]="cantidadDamage" required
                     autocomplete="off">
                 <label for="cantidad" class="active">Cantidad dañada</label>

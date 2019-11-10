@@ -25,6 +25,7 @@ export class EntregaComponent implements OnInit {
   public total: number
   public status: boolean
   public cantidadDamage: number = 1
+  public damageStatus: boolean
 
   constructor(
     private _identityGuard: IdentityGuard,
@@ -44,33 +45,37 @@ export class EntregaComponent implements OnInit {
     this.M = Material.getM()
     this.total = 0
     this.status = true
+    this.damageStatus = false
   }
 
   onSubmit(form) {
     this.total = this.costo()
     this.prestamo.valor = this.total
-    this.prestamo.cantidad = this.cantidadDamage
-    console.log(this.prestamo)
 
-    this._prestamoService.update(this.prestamo, this._userService.getToken()).subscribe(
-      Response => {
-        console.log(Response)
+    if (this.cantidadDamage <= this.prestamo.cantidad && this.cantidadDamage >= 0) {
+      this.prestamo.cantidad = this.cantidadDamage
+      this._prestamoService.update(this.prestamo, this._userService.getToken()).subscribe(
+        Response => {
+          console.log(Response)
 
-        if (Response.status == "succes" && Response.code == 200) {
-          for (let index = 0; index < this.prestamos.length; index++) {
-            if (this.prestamos[index].id == this.prestamo.id) {
-              this.prestamos.splice(index, 1)
+          if (Response.status == "succes" && Response.code == 200) {
+            for (let index = 0; index < this.prestamos.length; index++) {
+              if (this.prestamos[index].id == this.prestamo.id) {
+                this.prestamos.splice(index, 1)
+              }
             }
+            form.reset()
+            this.prestamo = Prestamo.prestamoDefault()
+            this.M.toast({ html: Response.message, classes: 'rounded' })
           }
-          form.reset()
-          this.prestamo = Prestamo.prestamoDefault()
-          this.M.toast({ html: Response.message, classes: 'rounded' })
+        },
+        error => {
+          console.error(error)
         }
-      },
-      error => {
-        console.error(error)
-      }
-    )
+      )
+    } else {
+      this.M.toast({ html: 'La cantidad dañada supera la cantidad prestada', classes: 'rounded' })
+    }
   }
 
   findPersona() {
@@ -137,16 +142,19 @@ export class EntregaComponent implements OnInit {
 
   back() {
     this.prestamo = Prestamo.prestamoDefault()
+    this.prestamo.recargo = []
+    this.total = 0
     this.total = 0
   }
 
   damage(estado = true) {
     if (estado) {
       this.prestamo.recargo = []
-      console.log(this.prestamo.recargo)
+      //eliminar posibles daños
+      this.prestamo.damage = false
     } else {
       let danio = Recargo.recargoDefault()
-
+      this.damageStatus = true
       //eliminar recargos para sumar la cantidad dañada
       for (let i = 0; i < this.prestamo.recargo.length; i++) {
         if (this.prestamo.recargo[i].motivo == 'Articulo dañado') {
@@ -164,7 +172,8 @@ export class EntregaComponent implements OnInit {
       this.prestamo.valor = this.costo() * this.cantidadDamage
 
       this.prestamo.recargo.push(danio)
-      this.total = this.costo() 
+      this.total = this.costo()
+      console.log(this.prestamo.recargo)
     }
   }
 
