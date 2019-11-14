@@ -1,0 +1,8 @@
+#form_add_person{
+  margin-top: 12%;
+  border-radius: 10px;
+}
+
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
+    background-color: #dfe44b;
+}
