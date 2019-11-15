@@ -1,163 +1,167 @@
-<!-- BUSCAR PERSONA -->
-<form #personaform="ngForm" (submit)="findPersona()">
+<div id="entregaCo" class="row">
+    <div class="col l7 offset-l3">
+        <!-- BUSCAR PERSONA -->
+        <form #personaform="ngForm" (submit)="findPersona()">
 
-    <div class="row">
-        <div class="col s12 input-field">
-            <input type="number" name="codigo" id="codigo" class="validate" #codigo [(ngModel)]="persona.id" required
-                autocomplete="off">
-            <label for="codigo">codigo</label>
-        </div>
-    </div>
-
-    <div class="row center" *ngIf="prestamo.id == 0">
-        <input type="submit" value="buscar" class="btn-large waves-effect waves-light center"
-            [disabled]="personaform.invalid">
-    </div>
-</form>
-<!-- /BUSCAR PERSONA -->
-
-<div *ngIf="busqueda">
-    <div class="progress" id="carga">
-        <div class="indeterminate"></div>
-    </div>
-</div>
-
-<div class="alert" *ngIf="!prestamos && !busqueda && persona.nombre">
-    <p>No tiene prestamos pendientes</p>
-</div>
-
-<!-- DATOS DE LA PERSONA -->
-<div class="row" *ngIf="persona.nombre && persona.apellido">
-    <div class="col s12 m6">
-        <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" [(ngModel)]="persona.nombre" id="nombre" disabled>
-    </div>
-    <div class="col s12 m6">
-        <label for="apellido">Apellido</label>
-        <input type="text" name="apellido" [(ngModel)]="persona.apellido" id="apellido" disabled>
-    </div>
-</div>
-<!-- /DATOS DE LA PERSONA -->
-
-<!-- PRESTAMOS -->
-<div class="row" *ngIf="prestamos && !busqueda && prestamo.id == 0" id="prestamos">
-    <div *ngFor="let prestamo of prestamos">
-
-        <!-- CARD -->
-        <div *ngIf="prestamo.visible" class="col s12 m6">
-            <div class="card">
-                <!-- IMAGEN -->
-                <div class="card-image">
-                    <img *ngIf="prestamo.articulo.foto" class="adapt" src="{{url + prestamo.articulo.foto}}" alt="">
-                    <img *ngIf="!prestamo.articulo.foto" class="adapt"
-                        src="https://screenshotlayer.com/images/assets/placeholder.png" alt="No se encontro la imaagen">
-
-                    <a *ngIf="prestamo.recargo.length > 0"
-                        class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="bottom"
-                        data-tooltip="Recargos pendientes"><i class="material-icons">assignment_late</i></a>
+            <div class="row">
+                <div class="col s12 input-field">
+                    <input type="number" name="codigo" id="codigo" class="validate" #codigo [(ngModel)]="persona.id" required
+                        autocomplete="off">
+                    <label for="codigo">codigo</label>
                 </div>
-                <!-- /IMAGEN -->
+            </div>
 
-                <!-- CONTENIDO -->
-                <div class="card-content">
-                    <span class="card-title">{{prestamo.articulo.nombre}}</span>
-                    <p [innerHTML]="prestamo.articulo.descripcion"></p>
-                    <br>
-                    <p>- Cantidad prestada {{prestamo.cantidad}}</p>
-                </div>
-                <!-- /CAONTENIDO -->
+            <div class="row center" *ngIf="prestamo.id == 0">
+                <input type="submit" value="buscar" class="btn-large waves-effect waves-green center lime darken-2 with-text"
+                    [disabled]="personaform.invalid">
+            </div>
+        </form>
+        <!-- /BUSCAR PERSONA -->
 
-                <!-- ACTION -->
-                <div class="card-action">
-                    <a (click)="entregaPrestamo(prestamo.id)" class="click">Entregar</a>
-                </div>
-                <!-- /ACTION -->
+        <div *ngIf="busqueda">
+            <div class="progress" id="carga">
+                <div class="indeterminate"></div>
             </div>
         </div>
-        <!-- /CARD -->
 
+        <div class="alert" *ngIf="!prestamos && !busqueda && persona.nombre">
+            <p>No tiene prestamos pendientes</p>
+        </div>
+
+        <!-- DATOS DE LA PERSONA -->
+        <div class="row" *ngIf="persona.nombre && persona.apellido">
+            <div class="col s12 m6 ">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" [(ngModel)]="persona.nombre" id="nombre" disabled>
+            </div>
+            <div class="col s12 m6">
+                <label for="apellido">Apellido</label>
+                <input type="text" name="apellido" [(ngModel)]="persona.apellido" id="apellido" disabled>
+            </div>
+        </div>
+        <!-- /DATOS DE LA PERSONA -->
+
+        <!-- PRESTAMOS -->
+        <div class="row" *ngIf="prestamos && !busqueda && prestamo.id == 0" id="prestamos">
+            <div *ngFor="let prestamo of prestamos">
+
+                <!-- CARD -->
+                <div *ngIf="prestamo.visible" class="col s12 m6 l5">
+                    <div class="card">
+                        <!-- IMAGEN -->
+                        <div class="card-image">
+                            <img *ngIf="prestamo.articulo.foto" class="adapt" src="{{url + prestamo.articulo.foto}}" alt="">
+                            <img *ngIf="!prestamo.articulo.foto" class="adapt"
+                                src="https://screenshotlayer.com/images/assets/placeholder.png" alt="No se encontro la imaagen">
+
+                            <a *ngIf="prestamo.recargo.length > 0"
+                                class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="bottom"
+                                data-tooltip="Recargos pendientes"><i class="material-icons">assignment_late</i></a>
+                        </div>
+                        <!-- /IMAGEN -->
+
+                        <!-- CONTENIDO -->
+                        <div class="card-content">
+                            <span class="card-title">{{prestamo.articulo.nombre}}</span>
+                            <p [innerHTML]="prestamo.articulo.descripcion"></p>
+                            <br>
+                            <p>- Cantidad prestada {{prestamo.cantidad}}</p>
+                        </div>
+                        <!-- /CAONTENIDO -->
+
+                        <!-- ACTION -->
+                        <div class="card-action">
+                            <a (click)="entregaPrestamo(prestamo.id)" class="click">Entregar</a>
+                        </div>
+                        <!-- /ACTION -->
+                    </div>
+                </div>
+                <!-- /CARD -->
+
+            </div>
+        </div>
+        <!-- /PRESTAMOS -->
+
+        <!-- ENTREGA -->
+        <div class="col s12" *ngIf="prestamo.id != 0">
+            <hr>
+            <a (click)="back()" class="click"><i class="material-icons">arrow_back</i></a>
+
+            <form #entregaForm="ngForm" (submit)="onSubmit(entregaForm)">
+
+                <!-- RECARGOS -->
+                <div class="row">
+                    <h4>{{prestamo.articulo.nombre}} x {{prestamo.cantidad}}</h4>
+                </div>
+                <div class="row" *ngIf="prestamo.recargo.length > 0">
+                    <table class="responsive-table">
+                        <thead>
+                            <tr>
+                                <th>Motivo de recargo</th>
+                                <th>Costo</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let rec of prestamo.recargo">
+                                <td [innerHTML]="rec.motivo"></td>
+                                <td [innerHTML]="rec.total"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="col s12">
+                            <p class="money">Total a pagar: {{ total | currency: 'USD' | lowercase }}</p>
+                    </div>
+
+                    <div class="col s10 input-field" *ngIf="damageStatus">
+                        <input type="number" name="cantidad" id="codigo" class="validate" #cantidad [(ngModel)]="cantidadDamage" required
+                            autocomplete="off">
+                        <label for="cantidad" class="active">Cantidad dañada</label>
+                    </div>
+
+                    <div class="col s2">
+                        <a class="waves-effect waves-light btn" (click)="damage(false)">Validar Precio</a>
+                    </div>
+
+                    <div></div>
+                </div>
+                <!-- /RECARGOS -->
+
+                <!-- DAMAGE -->
+                <div class="row" *ngIf="prestamo.recargo.length != 2">
+                    <div class="col s6 center">
+                        <p>
+                            <label>
+                                <input name="group1"
+                                 type="radio"
+                                  checked (click)="damage()" 
+                                  value="0"/>
+                                <span>Buen estado</span>
+                            </label>
+                        </p>
+                    </div>
+
+                    <div class="col s6 center">
+                        <p>
+                            <label>
+                                <input name="group1"
+                                 type="radio"
+                                (click)="damage(false)" 
+                                value="1"/>
+                                <span>Mal estado</span>
+                            </label>
+                        </p>
+                    </div>
+                </div>
+                <!-- /DAMAGE -->
+
+                <div class="row center">
+                    <input type="submit" value="Entregar" class="btn-large waves-effect waves-light center"
+                        [disabled]="!entregaForm.valid">
+                </div>
+            </form>
+        </div>
+        <!-- /ENTREGA -->
     </div>
 </div>
-<!-- /PRESTAMOS -->
-
-<!-- ENTREGA -->
-<div class="col s12" *ngIf="prestamo.id != 0">
-    <hr>
-    <a (click)="back()" class="click"><i class="material-icons">arrow_back</i></a>
-
-    <form #entregaForm="ngForm" (submit)="onSubmit(entregaForm)">
-
-        <!-- RECARGOS -->
-        <div class="row">
-            <h4>{{prestamo.articulo.nombre}} x {{prestamo.cantidad}}</h4>
-        </div>
-        <div class="row" *ngIf="prestamo.recargo.length > 0">
-            <table class="responsive-table">
-                <thead>
-                    <tr>
-                        <th>Motivo de recargo</th>
-                        <th>Costo</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr *ngFor="let rec of prestamo.recargo">
-                        <td [innerHTML]="rec.motivo"></td>
-                        <td [innerHTML]="rec.total"></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="col s12">
-                    <p class="money">Total a pagar: {{ total | currency: 'USD' | lowercase }}</p>
-            </div>
-
-            <div class="col s10 input-field" *ngIf="damageStatus">
-                <input type="number" name="cantidad" id="codigo" class="validate" #cantidad [(ngModel)]="cantidadDamage" required
-                    autocomplete="off">
-                <label for="cantidad" class="active">Cantidad dañada</label>
-            </div>
-
-            <div class="col s2">
-                <a class="waves-effect waves-light btn" (click)="damage(false)">Validar Precio</a>
-            </div>
-
-            <div></div>
-        </div>
-        <!-- /RECARGOS -->
-
-        <!-- DAMAGE -->
-        <div class="row" *ngIf="prestamo.recargo.length != 2">
-            <div class="col s6 center">
-                <p>
-                    <label>
-                        <input name="group1"
-                         type="radio"
-                          checked (click)="damage()" 
-                          value="0"/>
-                        <span>Buen estado</span>
-                    </label>
-                </p>
-            </div>
-
-            <div class="col s6 center">
-                <p>
-                    <label>
-                        <input name="group1"
-                         type="radio"
-                        (click)="damage(false)" 
-                        value="1"/>
-                        <span>Mal estado</span>
-                    </label>
-                </p>
-            </div>
-        </div>
-        <!-- /DAMAGE -->
-
-        <div class="row center">
-            <input type="submit" value="Entregar" class="btn-large waves-effect waves-light center"
-                [disabled]="!entregaForm.valid">
-        </div>
-    </form>
-</div>
-<!-- /ENTREGA -->

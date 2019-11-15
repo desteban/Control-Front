@@ -10,7 +10,7 @@
     <div *ngFor="let articulo of articulos">
 
         <!-- CARD -->
-        <div class="col s12 m6">
+        <div class="col s12 m6 l3">
             <div class="card">
                 <div class="card-image">
                     <img *ngIf="articulo.foto" class="adapt" src="{{url + articulo.foto}}" alt="{{articulo.nombre}}">
@@ -23,14 +23,14 @@
                     <span class="card-title">{{articulo.nombre}}</span>
                     <p [innerHTML]="articulo.descripcion"></p>
                     <br>
-                    <p>- Cantidad disponible actual {{articulo.cantidad_disponible}}</p>
+                    <p class="teal-text"> Cantidad disponible actual {{articulo.cantidad_disponible}}</p>
                 </div>
                 <!-- /CONTENIDO -->
 
                 <!-- ACCIONES -->
-                <div class="card-action">
-                    <a (click)="updateArticulo(articulo.id)" class="click">Editar</a>
-                    <a class="click" (click)="historial()" href="{{urlHistorial + articulo.id + '/pdf'}}"
+                <div  class="card-action row">
+                    <a (click)="updateArticulo(articulo.id)" class="click col s10 green-text">Editar</a>
+                    <a class="click col s10 cyan-text" (click)="historial()" href="{{urlHistorial + articulo.id + '/pdf'}}"
                         target="_blank">Descargar Historial</a>
                 </div>
                 <!-- /ACCIONES -->

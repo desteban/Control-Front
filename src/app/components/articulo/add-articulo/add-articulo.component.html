@@ -1,4 +1,4 @@
-<div class="col s12">
+<div id="add_article" class="col s12">
 
     <form class="col s12 m7 offset-m3 form-upload" #articuloForm="ngForm" (submit)="onSubmit(articuloForm)"
         *ngIf="articulo.id == 0">
@@ -56,7 +56,7 @@
             /IMAGEN -->
 
             <div class="row center">
-                <input type="submit" value="Crear" class="btn-large waves-effect waves-light center"
+                <input type="submit" value="Crear" class="btn-large waves-effect waves-green center lime darken-2 with-text"
                     [disabled]="articuloForm.invalid">
             </div>
 

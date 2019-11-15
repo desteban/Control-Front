@@ -3,61 +3,63 @@
         <div class="indeterminate"></div>
     </div>
 </div>
-
-<form *ngIf="articulos" class="col s12" #prestamoForm="ngForm" (submit)="onSubmit(prestamoForm)" id="prestamoForm">
-
-    <div class="row">
-        <div class="col s12 input-field">
-            <input type="number" name="estudiante" id="estudiante" class="validate" #estudiante
-                [(ngModel)]="prestamo.codigo_persona" required (blur)="findPersona()">
-            <label for="estudiante">Codigo de la persona</label>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col s12" *ngIf="personaData.id == 0 && !persona_status">
-            <p class="alert">No encontramos una persona asociada a ese codigo</p>
-        </div>
-
-        <div class="col s12" *ngIf="personaData.id != 0">
-            <div class="col s12 m6">
-                <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" [(ngModel)]="personaData.nombre" id="nombre" disabled>
+<div class="row">
+    <div id="add_prestamo" class="row white row z-depth-2 col l9 offset-l2">
+        <form *ngIf="articulos" class=" col s12 l8 offset-l2" #prestamoForm="ngForm" (submit)="onSubmit(prestamoForm)" id="prestamoForm">
+            <div class="row">
+                <div class="col s12 input-field">
+                    <input type="number" name="estudiante" id="estudiante" class="validate" #estudiante
+                        [(ngModel)]="prestamo.codigo_persona" required (blur)="findPersona()">
+                    <label for="estudiante">Codigo de la persona</label>
+                </div>
             </div>
-            <div class="col s12 m6">
-                <label for="apellido">Apellido</label>
-                <input type="text" name="apellido" [(ngModel)]="personaData.apellido" id="apellido" disabled>
+
+            <div class="row">
+                <div class="col s12" *ngIf="personaData.id == 0 && !persona_status">
+                    <p class="alert">No encontramos una persona asociada a ese codigo</p>
+                </div>
+
+                <div class="col s12" *ngIf="personaData.id != 0">
+                    <div class="col s12 m6">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre" [(ngModel)]="personaData.nombre" id="nombre" disabled>
+                    </div>
+                    <div class="col s12 m6">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" name="apellido" [(ngModel)]="personaData.apellido" id="apellido" disabled>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <!-- ARTICULO -->
-    <div class="row">
-        <!-- ESCOJER ARTICULO -->
-        <div class="input-field col s12 m6">
-            <select #idArticulo [(ngModel)]="prestamo.id_articulo" name="idArticulo" required>
-                <option value="" disabled selected>Escoge un artículo</option>
-                <option *ngFor="let articulo of articulos" value="{{articulo.id}}" [innerHTML]="articulo.nombre">
-                </option>
-            </select>
-            <label>Articulo</label>
-        </div>
-        <!-- /ESCOJER ARTICULO -->
+            <!-- ARTICULO -->
+            <div class="row">
+                <!-- ESCOJER ARTICULO -->
+                <div class="input-field col s12 m6">
+                    <select #idArticulo [(ngModel)]="prestamo.id_articulo" name="idArticulo" required>
+                        <option value="" disabled selected>Escoge un artículo</option>
+                        <option *ngFor="let articulo of articulos" value="{{articulo.id}}" [innerHTML]="articulo.nombre">
+                        </option>
+                    </select>
+                    <label>Articulo</label>
+                </div>
+                <!-- /ESCOJER ARTICULO -->
 
-        <!-- CANTIDAD -->
-        <div class="col s12 m6">
-            <div class="input-field">
-                <input type="number" name="cantidad" id="cantidad" #cantidad [(ngModel)]="prestamo.cantidad" required>
-                <label for="cantidad">Cantidad</label>
+                <!-- CANTIDAD -->
+                <div class="col s12 m6">
+                    <div class="input-field">
+                        <input type="number" name="cantidad" id="cantidad" #cantidad [(ngModel)]="prestamo.cantidad" required>
+                        <label for="cantidad">Cantidad</label>
+                    </div>
+                </div>
+                <!-- /CANTIDAD -->
+
             </div>
-        </div>
-        <!-- /CANTIDAD -->
+            <!-- /ARTICULO -->
 
+            <div class="row center">
+                <input type="submit" value="Crear" class="btn-large waves-effect waves-green center lime darken-2 with-text"
+                    [disabled]="prestamoForm.invalid">
+            </div>
+        </form>
     </div>
-    <!-- /ARTICULO -->
-
-    <div class="row center">
-        <input type="submit" value="Crear" class="btn-large waves-effect waves-light center"
-            [disabled]="prestamoForm.invalid">
-    </div>
-</form>
+</div>
